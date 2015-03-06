@@ -1,0 +1,30 @@
+.box {
+    padding-top:1em;
+    padding-bottom:1em;
+    margin-top: 5px;
+    color: #ffffff;
+}
+.box p, .box a {
+    color: #ffffff;
+    font-size: 1.4em
+}
+
+.box h2 {
+    font-size:3em;
+}
+
+.disruption-box {
+    background-color: #9c27b0;
+}
+
+.tumtum-demand-box {
+    background-color: #009688;
+}
+
+.feedback-box {
+    background-color: #03A9F4;
+}
+
+.events-box {
+    background-color: #E91E63;
+}
