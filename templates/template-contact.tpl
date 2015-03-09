@@ -39,8 +39,9 @@
 </address>
 
 <address>
-  <strong>Email</strong><br>
-  <a href="mailto:n.r.velaga@iitb.ac.in">n.r.velaga@iitb.ac.in</a><br>
+  <strong>Email Dev Team</strong><br>
+  <a href="mailto:sankrantijoshi@gmail.com">Sankranti Joshi</a><br>
+  <a href="mailto:s.beran@abdn.ac.uk">Stanislav Beran</a><br>
   <strong >Phone</strong><br>
   (+91) 022- 2576-7341 (O)
 </address>

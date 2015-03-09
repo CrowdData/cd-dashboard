@@ -67,13 +67,26 @@ function query(query,tableID){
                 }
                 return tr;
             }
+      
+  function isUrl(s) {
+var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+return regexp.test(s);
+}
             function getTableCell(fieldName, rowData) {
 			console.log("getTableCell"+fieldName);
-                var td = $("<td><a></a></td>");
+                var td = $("<td></td>");
                 var fieldData = rowData[fieldName];
 				if(fieldData){
 				console.log("FieldData"+JSON.stringify(fieldData));
 		
+                                if (isUrl(fieldData.value)){
+                                var aTag=$('<a>',{href:fieldData.value});
+                                aTag.text(fieldData.value);
+                                td.append(aTag);
+                                return td;//code
+                                }
+                
+                
                 td.html(fieldData.value);
 				}
 				else{

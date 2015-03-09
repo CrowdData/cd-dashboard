@@ -14,4 +14,15 @@
     padding-top: 3em;
     padding-bottom: 3em;
 }
-    
+.capitalize{
+     text-transform: capitalize;
+}
+
+.nowrapTabStrip.dijitTabContainerTop-tabs{
+    display:none;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}

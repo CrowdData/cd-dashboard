@@ -25,8 +25,9 @@
       
       <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 class="data-display">[@templateTitle] VIEW</h1>
-          </div>
+              <h1 class="data-display capitalize">[@templateTitle] View</h1>
+	      <p>This is a placeholder description of this view explaining what is seen? <time datetime="1914-12-20 08:30:45.687">Time</time></p>
+          </div> 
       </div>
 
      <div class="container data-display-content ">     

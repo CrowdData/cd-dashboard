@@ -44,8 +44,9 @@ function holderObject(){
 	function addButton(location) {
     //Create an input type dynamically.   
     var element = document.createElement("button");
-		element.innerHTML="Send Data";
-		element.className="btn btn-default";
+		element.innerHTML="Submit Report";
+		element.className="btn btn-default hidden";
+		element.id="templateButton";
     element.onclick = sendData;
 	
     var foo = document.getElementById(location);

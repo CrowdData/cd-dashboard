@@ -36,7 +36,7 @@
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
         box-sizing: content-box;
-		height: auto;
+	/*	height: auto;*/
     }
     .main {
         position: relative;
@@ -65,12 +65,18 @@
 	
 	 <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 class="data-display">[@templateTitle] REPORT</h1>
+              <h1 class="data-display capitalize">[@templateTitle] Report</h1>
           </div>
       </div>
 	    <div class="main">
 		<div id="_editor">
+    
+
 		<div id="[@templateTitle]Div"></div>
+		<div id="loading" class="col-md-12 text-center vcenter">
+	<h2 class="data-display capitalize">Loading [@templateTitle] Report</h2><br>
+        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+    </div>
 		</div>
 		</div>
 	</div>

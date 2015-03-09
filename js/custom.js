@@ -69,6 +69,8 @@ function  loadGraph(templateSrc, resourceURI, locationToLoad, holder){
 			
                 holder.EXPERIMENT = new Experiment({ templateObj: templateSrc, resource:resourceURI, hideTemplate: true }, locationToLoad);
                 holder.EXPERIMENT.startup();
+		$('#loading').addClass('hidden');
+		$('#templateButton').removeClass('hidden');
 
      });
 };

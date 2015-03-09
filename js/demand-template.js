@@ -5,7 +5,7 @@ function getData() {
  var demandQuery ="SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/TestDemand1/data/> {\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demand/data/> {\
 													?resource <http://purl.org/dc/terms/date> ?Date .\
 											OPTIONAL { ?resource <http://xmlns.com/foaf/0.1/DemandPersonLocation> ?Demand }\
 											OPTIONAL { ?resource <http://purl.org/dc/terms/Location> ?Location }\
@@ -20,7 +20,7 @@ function holderObject(){
 	this.EXPERIMENT;
 	this.GRAPH;
 	this.RESPONSE;
-	this.DATASET_ID="TestDemand1";
+	this.DATASET_ID="demand";
 	}
 	
 	var holder=new holderObject();
@@ -44,8 +44,9 @@ function holderObject(){
 	function addButton(location) {
     //Create an input type dynamically.   
     var element = document.createElement("button");
-		element.innerHTML="Send Data";
-		element.className="btn btn-default";
+		element.innerHTML="Submit Demand";
+		element.className="btn btn-default hidden";
+		element.id="templateButton";
     element.onclick = sendData;
 	
     var foo = document.getElementById(location);
