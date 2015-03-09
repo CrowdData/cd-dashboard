@@ -14,7 +14,7 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link type="text/css" href="release/dijit/themes/claro/claro.css" rel="stylesheet" />
     <link type="text/css" href="release/rdforms/view/resources/rdforms.css" rel="stylesheet" />
-    <script src="release/dojo/dojo.js"></script>
+    <script src="release/dojo/dojo.js.uncompressed.js"></script>
  
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="js/custom.js"></script>
@@ -65,16 +65,20 @@
 	
 	 <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 class="data-display capitalize">[@templateTitle] Report</h1>
+              <h1 class="data-display capitalize">Provide [@templateMessageTitle]</h1>
+	      <p>[@templateMessage]</p>
           </div>
       </div>
 	    <div class="main">
 		<div id="_editor">
     
-
+<div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&times;</a>
+    <strong>Please note</strong>, all fields are mandatory.
+</div>
 		<div id="[@templateTitle]Div"></div>
 		<div id="loading" class="col-md-12 text-center vcenter">
-	<h2 class="data-display capitalize">Loading [@templateTitle] Report</h2><br>
+	<h2 class="data-display capitalize">Loading [@templateMessageTitle] ...</h2><br>
         <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
     </div>
 		</div>
@@ -84,8 +88,7 @@
 	
 	 <div class="container-fluid data-display-footer">
           <div class="container">
-              <a class="btn btn-default" href="index.php" role="button">Back to dashboard</a>
-            <a class="btn btn-default" href="[@templateTitle]-view.php" role="button">Back to [@templateTitle]</a>
+
           </div>
       </div>
 	 

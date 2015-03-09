@@ -26,26 +26,14 @@
      
      <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 class="data-display">Contact Page</h1>
+              <h1 class="data-display">Contact Us</h1>
           </div>
 		  </div>
 		  
-		      <div class="container-fluid data-display-content">
-		  <address>
-  <strong>Indian Institute of Technology (IIT)</strong><br>
-  Bombay<br>
- Powai, Mumbai<br>
- India-400 076<br>
-</address>
-
-<address>
-  <strong>Email Dev Team</strong><br>
-  <a href="mailto:sankrantijoshi@gmail.com">Sankranti Joshi</a><br>
-  <a href="mailto:s.beran@abdn.ac.uk">Stanislav Beran</a><br>
-  <strong >Phone</strong><br>
-  (+91) 022- 2576-7341 (O)
-</address>
-      </div>
+		      <div class="container">
+			<blockquote>If you would like to contact us, please either use the <a href="feedback-report.php">Feedback page</a> or contact Lekshmy via <a href="mailto:lekshmy">email</a>.</blockquote>	
+		      </div>
+ 
       
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

@@ -2,13 +2,12 @@
 
 // called when page loaded
 function getData() {
- var feedbackQuery ="SELECT    ?Feedback_Provider ?Email ?Feedback \
+ var feedbackQuery ="SELECT    ?Feedback_Provider ?Feedback \
                                                     WHERE\
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/feedback/data/> {\
                                                      ?resource <http://purl.org/dc/terms/abstract> ?Feedback ;\
-														<http://purl.org/dc/terms/creator> ?Feedback_Provider ;\
-													OPTIONAL{ ?resource <http://xmlns.com/foaf/0.1/account> ?Email }.\
+							<http://purl.org/dc/terms/creator> ?Feedback_Provider .\
                                                     }\
                                                     } ";
 var tableID="#feedback-data-table";
@@ -44,7 +43,7 @@ function holderObject(){
 	function addButton(location) {
     //Create an input type dynamically.   
     var element = document.createElement("button");
-		element.innerHTML="Submit Report";
+		element.innerHTML="Submit Feedback";
 		element.className="btn btn-default hidden";
 		element.id="templateButton";
     element.onclick = sendData;

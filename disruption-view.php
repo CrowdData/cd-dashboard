@@ -14,6 +14,9 @@
 	$layout = new Template("templates/template-view.tpl");
 	$layout->set("templateTitle", "disruption");
 	$layout->set("datasetID","disruption");
+	$layout->set("tableMessage","This table displays details of disruptions (unexpected events) on campus provided by users");
+	$layout->set("templateTableTitle","Disruptions on Campus");
+	$layout->set("provideButton","details of a disruption");
 	$layout->set("menu", $menu->output());
 	
 	/**

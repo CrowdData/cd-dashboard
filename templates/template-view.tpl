@@ -25,13 +25,12 @@
       
       <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 class="data-display capitalize">[@templateTitle] View</h1>
-	      <p>This is a placeholder description of this view explaining what is seen? <time datetime="1914-12-20 08:30:45.687">Time</time></p>
+              <h1 class="data-display capitalize">[@templateTableTitle] </h1>
+	      <p class="capitalize">[@tableMessage]</p>
           </div> 
       </div>
 
      <div class="container data-display-content ">     
-         <h2 class="">Latest [@templateTitle] data</h2>
 			<div class="table-responsive">
 		<table id="[@templateTitle]-data-table">
          </table>
@@ -40,8 +39,7 @@
       
       <div class="container-fluid data-display-footer">
           <div class="container">
-              <a class="btn btn-default" href="index.php" role="button">Back to dashboard</a>
-            <a class="btn btn-default" href="[@templateTitle]-report.php" role="button">Report [@templateTitle]</a>
+            <a class="btn btn-default" href="[@templateTitle]-report.php" role="button">Provide [@provideButton]</a>
           </div>
       </div>
       
