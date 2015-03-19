@@ -1,0 +1,43 @@
+.data-display-header{
+    margin-top:50px;
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+    
+
+.data-display-content {
+    margin-top:3em;
+    margin-bottom:3em;
+}
+
+.data-display-footer{
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+.capitalize{
+     text-transform: capitalize;
+}
+
+.nowrapTabStrip.dijitTabContainerTop-tabs{
+    display:none;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+p {
+    font-size: large;
+}
+.dijitTabPaneWrapper.dijitTabContainerTop-container.dijitAlignCenter
+{
+    border-color: #ffffff;
+}
+
+.container-fluid.data-display-header {
+    margin-bottom: 10px;
+}
+div.col-md-12{
+    padding:0;
+    
+}
