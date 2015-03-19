@@ -26,12 +26,14 @@
      
      <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 class="data-display">Contact Us</h1>
+              <h1 class="data-display">About IITB View</h1>
           </div>
 		  </div>
 		  
 		      <div class="container">
-			<p>If you would like to contact us, please either use the <a href="feedback-report.php">Feedback page</a> or contact Lekshmy via <a href="mailto:lekshmyvv@iitb.ac.in">email</a>.</p>	
+			<p>The IITB View is being developed as part of the CrowdData project, a collaboration between researchers at the <a href="http://www.iitb.ac.in">IIT Bombay</a> and the <a href="http://www.dotrural.ac.uk">dot.rural Digital Economy Hub</a> at the <a href="http://www.abdn.ac.uk">University of Aberdeen</a>
+			For more details of the project, please see the <a href = http://www.dotrural.ac.uk/dotrural/crowddata>project webpage</a></p>
+
 		      </div>
  
       

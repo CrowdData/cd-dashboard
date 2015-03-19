@@ -14,4 +14,30 @@
     padding-top: 3em;
     padding-bottom: 3em;
 }
+.capitalize{
+     text-transform: capitalize;
+}
+
+.nowrapTabStrip.dijitTabContainerTop-tabs{
+    display:none;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+p {
+    font-size: large;
+}
+.dijitTabPaneWrapper.dijitTabContainerTop-container.dijitAlignCenter
+{
+    border-color: #ffffff;
+}
+
+.container-fluid.data-display-header {
+    margin-bottom: 10px;
+}
+div.col-md-12{
+    padding:0;
     
+}

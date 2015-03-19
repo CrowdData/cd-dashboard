@@ -25,52 +25,38 @@
       
       <div class="container-fluid data-display-header">
           <div class="container">        
-              <h1 >IIT Bombay View</h1>
+              <h1 class="">IIT Bombay View</h1>
               <p>Providing a snapshot of life on the IITB campus</p>
-              <p>The IIT Bombay view provides information about various aspects of the campus.
-              Click on any of the "View" links below to see the latest information for the different categories, or click "Report" to provide some.</p>
           </div>
       </div>
 
      <div class="container display-content ">     
          <div class="row">
-          
+            <div class="col-sm-3 box feedback-box">
+               <h2>Feedback<br/><br/></h2>
+                <p><a href="feedback-view.php">View</a></p>
+                <p><a href="feedback-report.php">Report</a></p>
+             </div>
              <div class="col-sm-3 col-sm-offset-1 box tumtum-demand-box">
                 <p><h2>TumTum Demand</h2></p>
                  <p><a href="demand-view.php">View</a></p>
                 <p><a href="demand-report.php">Report</a></p>
              </div>
-         
-         
-                 <div class="col-sm-3 col-sm-3 col-sm-offset-1 box disruption-box">
+             <div class="col-sm-3 col-sm-3 col-sm-offset-1 box disruption-box">
                 <h2>Campus Disruptions</h2>
         <p><a href="disruption-view.php">View</a></p>
                 <p><a href="disruption-report.php">Report</a></p>
              </div>
-                 
-                 
-             <div class="col-sm-3 col-sm-offset-1 box events-box">
-                <h2>Events<br/><br/></h2>
-                 <p><a href="events-view.php">View</a></p>
-                <p><a href="events-report.php">Report</a></p>
-             </div>
-             
-            <div class="col-sm-3 col-sm-offset-1 box feedback-box">
-               <h2>Feedback<br/><br/></h2>
-                <p><a href="feedback-view.php">View</a></p>
-                <p><a href="feedback-report.php">Report</a></p>
-             </div>
-            
-             <div class="col-sm-3 col-sm-offset-1 box map-box">
-               <h2>Campus Map<br/><br/></h2>
-                <p><a href="map.php">View Map</a></p>
-               
-             </div>
-          
-      
          </div>
          
-      
+         <div class="row">
+            <div class="col-sm-3 box events-box">
+                <h2>Events<br/><br/></h2>
+                 <p><a href="event-view.php">View</a></p>
+                <p><a href="event-report.php">Report</a></p>
+             </div>
+         
+         </div>
          
       </div>
             

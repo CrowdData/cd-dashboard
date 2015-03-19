@@ -12,19 +12,10 @@ function getData() {
 														OPTIONAL{?resource <http://xmlns.com/foaf/0.1/depiction> ?Picture_link.}\
                                                     }\
                                                     } ORDER BY DESC(?Occurence_At)";
-var tableID="#disruption-data-table";
-query(disruptionQuery,tableID);
+query(disruptionQuery,handleTable);
 			
 }
 
-function holderObject(){
-	this.EXPERIMENT;
-	this.GRAPH;
-	this.RESPONSE;
-	this.DATASET_ID="";
-	}
-	
-	var holder=new holderObject();
 	
 	function getTemplate(datasetID,loc){
 	holder.DATASET_ID=datasetID;
@@ -35,23 +26,12 @@ function holderObject(){
 	}
 	
 	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder );
-	addButton(loc);
+	addButton(loc,"Submit report");
 	};
 	
 	
 	
-	
-	
-	function addButton(location) {
-    //Create an input type dynamically.   
-    var element = document.createElement("button");
-		element.innerHTML="Send Data";
-		element.className="btn btn-default";
-    element.onclick = sendData;
-	
-    var foo = document.getElementById(location);
-    foo.appendChild(element);
-}
+
 function sendData(){
 sendDataAll("disruption",holder);
 }
