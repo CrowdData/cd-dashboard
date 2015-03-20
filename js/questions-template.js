@@ -27,8 +27,7 @@ var result=query(questionsQuery,loadQuestions);
 	alert("No form created, failed to get URI");
 	}
 	else{
-	addButton(loc,"Submit your question");
-	loadGraph(TemplateProvider.getTemplate(holder.templateID), holder.RESPONSE, loc, holder );
+	loadGraph(TemplateProvider.getTemplate(holder.templateID), holder.RESPONSE, loc, holder, "Submit your question" );
 
 	}
 	};
@@ -40,20 +39,26 @@ console.log("Data in template"+JSON.stringify(data));
 var bindings=data.results.bindings;
 for(var id in bindings){
 var row=bindings[id];
-addQuestionDiv(row.resource.value,row.author.value, row.question.value,row.created.value);
+addQuestionDiv(row.resource.value,row.author.value, row.question.value,row.created.value,id);
 
 }
 
 }
-
-function addQuestionDiv(questionID,author,questionContent,created){
+function addQuestionDiv(questionID,author,questionContent,created,id){
 var container=$('#questionsDiv');
 var questionDiv=$('<div class=\'question row\' id='+questionID+'></div>');
-questionDiv.append($('<h4>Question: </h2>').append(questionContent));
-questionDiv.append($('<h5>by </h3>').append(author));
-questionDiv.append($('<h5>at  </h3>').append(parseXSDDateString(created).toLocaleString()));
+if (id%2==0) {
+	questionDiv.addClass('even');	
+}
 
-var replyButton=$('<a class=\'btn btn-success\' href=responses-view.php?id='+escape(questionID)+'&author='+escape(author)+'&question='+escape(questionContent)+'>Show responses</a>').appendTo(questionDiv);
+var questionCol=$('<div class=\'col-xs-9 col-md-9\'></div>').appendTo(questionDiv);
+var buttonCol=$('<div class=\'col-xs-3 col-md-3\'></div>').appendTo(questionDiv);
+
+
+questionCol.append($('<h4>Question: </h2>').append(questionContent));
+questionCol.append($('<i>- by </i>').append(author).append(' at '+ parseXSDDateString(created).toLocaleString()));
+
+var replyButton=$('<a class=\'btn btn-success\' href=responses-view.php?id='+escape(questionID)+'&author='+escape(author)+'&question='+escape(questionContent)+'>Show responses</a>').appendTo(buttonCol);
 container.append(questionDiv);
 
 }

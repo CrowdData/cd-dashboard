@@ -33,25 +33,7 @@
         @import "release/dijit/themes/claro/claro.css";
         @import "release/rdforms/view/resources/rdforms.css";
   
-    #_editor * {
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;
-		height: auto;
-    }
-    .main {
-        position: relative;
-		
-		
-    }
-    .main #_editor {
-        position: absolute;
-		height:10em;
-        top: 1em;
-        bottom: 1em;
-        left: 0px;
-        right: 0px;
-    }
+
 </style>
 
 
@@ -65,27 +47,30 @@
 	
 	
 	
-	 <div class="container-fluid data-display-header">
+	 <div class="container-fluid data-display-header" >
           <div class="container">        
-              <h1 class="data-display capitalize">Question : [@question]</h1>
-				   <h5 class="data-display">Author : [@author]</h1>
+              <h1 class="data-display capitalize">Responses to Question: [@question]</h1>
+				   <h5 class="data-display">Author: [@author]</h1>
           </div>
       </div>
-	  
+	 <div  id="top"></div>
 	    <div class="main container">
-		<button class='btn btn-success center' id='newResponse' onclick='addResponse();'>Do you know how to answer? Reply to this question</button>
+		<a class='btn btn-success center' id='newResponse' href="#onlyrdform"'>Answer this question</a>
 	<div id="responsesDiv" class="container"></div>
     
 
-	<div id="_editor">		
-			<div id="[@templateID]ID1"></div>
+	<div id="_editor" class="hidden">		
+			<div id="[@templateID]ID"></div>
 		</div>
+	
+		    <p>Response form</p>
+		<div id="onlyrdform" class="container"></div>
 		
 		<div id="errorDiv" class="alert alert-danger hidden"></div>
 		
 		
 		
-		</div>
+		
 	
 	
 	

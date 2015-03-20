@@ -10,9 +10,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard-general.css" rel="stylesheet">
     <link href="css/dashboard-[@templateTitle].css" rel="stylesheet">
-
-	  <link type="text/css" href="release/dijit/themes/claro/claro.css" rel="stylesheet" />
-    <link type="text/css" href="release/rdforms/view/resources/rdforms.css" rel="stylesheet" />      
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,20 +38,12 @@
     
 		
 		<div id="errorDiv" class="alert alert-danger hidden"></div>
-		
-		
-		
+
 		</div>
 	
       <div class="container-fluid data-display-footer">
-          <div class="container main">
-		  	<div id="_editor">
-	    <div id="mandatoryDiv" class="hidden">
-	
-</div>
-		
-			<div id="questionsID"></div>
-		</div>
+    <div class="container">
+            <a class="btn btn-default" href="questions-report.php" role="button">Ask a question</a>
           </div>
       </div>
       

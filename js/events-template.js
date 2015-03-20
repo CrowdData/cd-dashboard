@@ -26,8 +26,8 @@ query(eventQuery,handleTable);
 	alert("Failed get URI");
 	}
 	
-	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder );
-	addButton(loc,"Submit new event");
+	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder, "Submit new event" );
+	
 	};
 	
 	

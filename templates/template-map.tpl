@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -21,23 +20,21 @@
     
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+      <script src='js/leaflet.js'></script>
     <script src='js/general-map.js'></script>
     <script src='js/loadData.js'></script>
     <script src='js/general-query.js'></script>
-  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
-    <link href='http://api.tiles.mapbox.com/v4/auto/' />
-   <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.js'></script>
-<link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.css' rel='stylesheet' />
+  <link href='css/leaflet.css' rel='stylesheet' />
+   
 <script src="js/Leaflet.MakiMarkers.js"></script>
     
     
     
     
   </head>
-  <body onload="getMap();">
+  <body onload="initialize()">
       <!-- should be included as PHP fixed menu, will be updated later -->
-     [@menu]
+      [@menu]
       
       <div class="container-fluid data-display-header">
           <div class="container">        
@@ -48,12 +45,34 @@
 
      <div class="container display-content ">     
 
-   <div id='map-one' class='map' style="height: 725px;  width: inherit; padding: 2px; "> </div>
+   <div id='map' class='map' style="height: 725px;  width: inherit; padding: 2px; "> </div>
 <script>
-    L.mapbox.accessToken = 'pk.eyJ1Ijoic2FuZHkxNDAxaiIsImEiOiJQZm1jUDA0In0.46oeppB8hBZXx13FPXFGeg';
-    map = L.mapbox.map('map-one', 'sandy1401j.kkfo49n8').setView([19.132E0, 72.9151E0], 16);
+ 
    
+     var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+             '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+         mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
+     var streets = L.tileLayer(mbUrl, { id: 'sandy1401j.kkfo49n8', attribution: mbAttr });
+
+     var map = L.map('map', {
+         center: [19.132E0, 72.9151E0],
+         zoom: 16,
+         layers: [streets, BusLocations]
+     });
+
+     var baseLayers = {
+         
+         "Streets": streets
+     };
+
+     var overlays = {
+         "Bus Stops": BusStops,
+         "TumTum Locations": BusLocations
+     };
+
+     L.control.layers(baseLayers, overlays).addTo(map);
 </script>
           
       

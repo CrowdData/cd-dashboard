@@ -24,8 +24,7 @@ query(demandQuery,handleTable);
 	alert("Failed get URI");
 	}
 	
-	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder );
-	addButton(loc,"Submit demand details");
+	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder,"Submit demand details" );
 	};
 	
 	

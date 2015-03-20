@@ -12,7 +12,7 @@
 
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link type="text/css" href="release/dijit/themes/claro/claro.css" rel="stylesheet" />
+  <link type="text/css" href="release/dijit/themes/claro/claro.css" rel="stylesheet" />
     <link type="text/css" href="release/rdforms/view/resources/rdforms.css" rel="stylesheet" />
     <script src="release/dojo/dojo.js"></script>
  
@@ -30,26 +30,8 @@
     </script>
 	<style>
         @import "release/dijit/themes/claro/claro.css";
-        @import "release/rdforms/view/resources/rdforms.css";
+     
   
-    #_editor * {
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;
-		height: auto;
-    }
-    .main {
-        position: relative;
-		height: 20em;
-		margin-bottom:7em;
-    }
-    .main #_editor {
-      /*  position: absolute;
-        top: 1em;
-        bottom: 1em;
-        left: 0px;
-        right: 0px;*/
-    }
 </style>
 
 
@@ -72,12 +54,13 @@
 	    <div class="main container">
 	
     
-
-	<div id="_editor">
+	<div id='onlyrdform'></div>
+	<div id="_editor" class="hidden">
 	    <div id="mandatoryDiv" class="hidden">
 		  <p>[@templateMessage]</p>
 </div>
-		<div id="[@templateTitle]Div"></div>
+		<div id="[@templateTitle]Div" class="hidden"></div>
+	
 		</div>
 		<div id="loading" class="col-md-12 text-center vcenter">
 	<h2 class="data-display capitalize">Loading [@templateMessageTitle] ...</h2><br>
@@ -93,9 +76,7 @@
 	
 	
 	 <div class="container-fluid data-display-footer">
-          <div class="container">
 
-          </div>
       </div>
 	 
 </body>

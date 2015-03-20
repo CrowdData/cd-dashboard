@@ -41,7 +41,7 @@
 						"id":"creator",
                         "type": "group",
                         "nodetype": "BLANK",
-                        "label": { "en": "Author of question" },
+                        "label": { "en": "Your details" },
 						"description": { "en": "Provide your details" },
                         "property": "http://rdfs.org/sioc/ns#has_creator",
                         "cardinality": { "min": 1, "max": 1 },

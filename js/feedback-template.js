@@ -23,8 +23,7 @@ query(feedbackQuery,handleTable);
 	alert("Failed get URI");
 	}
 	
-	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder );
-	addButton(loc,"Submit feedback");
+	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder,"Submit new feedback" );
 	};
 	
 	

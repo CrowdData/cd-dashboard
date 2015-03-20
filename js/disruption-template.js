@@ -25,8 +25,7 @@ query(disruptionQuery,handleTable);
 	alert("Failed get URI");
 	}
 	
-	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder );
-	addButton(loc,"Submit report");
+	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder ,"Submit report");
 	};
 	
 	

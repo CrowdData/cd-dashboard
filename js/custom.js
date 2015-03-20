@@ -75,8 +75,9 @@ $.ajax({
 return message;
 };
 
-
+var labels="";
 function isComplete(holder){
+labels="";
 if (holder.report.errors.length>0) {
 $('.rformsLabel').each(function(i){
 		
@@ -84,7 +85,7 @@ $('.rformsLabel').each(function(i){
 		
 		
 	});
-	var labels="";
+	
 	for (index = 0; index < holder.report.errors.length; ++index) {
 		var label=holder.report.errors[index].item._source.label.en;
 	labels+=label+"\n";
@@ -111,7 +112,7 @@ var rdfjson=holder.EXPERIMENT.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
-alert("Please note, following fields are still required to be filled in: \n"+labels);
+alert("Please note, fields highlighted in red are required : \n"+labels);
 }
 
 else{
@@ -146,7 +147,7 @@ function showError(error,message) {
   ]);
 }
 
-function  loadGraph(templateSrc, resourceURI, locationToLoad, holder){
+function  loadGraph(templateSrc, resourceURI, locationToLoad, holder, buttonString){
 
 
 if (resourceURI.indexOf("failed")!=-1) {
@@ -167,17 +168,65 @@ if (resourceURI.indexOf("failed")!=-1) {
         'dojo/domReady!'             //Wait until the dom is ready.
             ], function (Experiment, system, Graph, Engine,ItemStore,domAttr) {
 			
-			
-                holder.EXPERIMENT = new Experiment({ templateObj: templateSrc, resource:resourceURI, hideTemplate: true }, locationToLoad);
+		holder.GRAPH=new Graph();	
+                holder.EXPERIMENT = new Experiment({ graph:holder.GRAPH,templateObj: templateSrc, resource:resourceURI, hideTemplate: true }, locationToLoad);
                 holder.EXPERIMENT.startup();
 		$('#loading').addClass('hidden');
-		$('#templateButton').removeClass('hidden');
-		$('#mandatoryDiv').removeClass('hidden');
-		$('#editorDiv').removeClass('hidden');
+		
+	//	$('#mandatoryDiv').removeClass('hidden');
+	//	$('#editorDiv').removeClass('hidden');
 		holder.template=holder.EXPERIMENT.template;
+	
+	applyStyling();
+	$('#onlyrdform').append($("#dijit__Widget_0").css('height','auto'));
+	addButton(buttonString);
+	$('#templateButton').removeClass('hidden');
+	
 			var itemStore=new ItemStore();
 			 var bundle = itemStore.registerBundle({source: templateSrc});
 			 holder.templateRoot=bundle.getRoot();
+
+     });
+};
+
+function applyStyling() {
+	$( ".rformsTopLevel.rformsRow" ).addClass( "row" );
+	$( ".rformsLabelRow" ).addClass( "row col-sm-10 " );
+	$( ".rformsFields" ).addClass( "row col-sm-10 " );
+	//$( ".rformsRow" ).addClass( "row" );
+	$(".rformsFieldControl").addClass("col sm-1");
+	$(".rformsFieldControl").addClass("col sm-10");
+	
+	
+	$(".rforms.rformsEditor.compact").removeClass('compact');
+	
+	
+	
+}
+function  reset(){
+
+
+    require([
+        'rdforms/apps/Experiment',        //The editor User interface
+        'rdforms/model/system',
+		 'rdfjson/Graph',
+		  'rdforms/model/Engine',
+		 'rdforms/template/ItemStore',
+        'dojo/dom-attr',
+        'dojo/domReady!'             //Wait until the dom is ready.
+            ], function (Experiment, system, Graph, Engine,ItemStore,domAttr) {
+			
+		holder.GRAPH=new Graph();	
+                holder.EXPERIMENT.graph=holder.GRAPH;
+		holder.EXPERIMENT._rdfTab.setGraph(holder.GRAPH);
+		getUniqueResourceForDataset(holder);
+		holder.EXPERIMENT.resource=holder.RESPONSE;
+		holder.EXPERIMENT._updateGraph();
+               holder.EXPERIMENT._initEditor();
+	
+		applyStyling();
+	
+	
 
      });
 };
@@ -199,15 +248,17 @@ function checkCardinality(holder){
 }
 
 	
-	function addButton(location,innerHtml) {
+	function addButton(buttonString) {
     //Create an input type dynamically.   
     var element = document.createElement("button");
-		element.innerHTML=innerHtml;
-		element.className="btn btn-default hidden";
+		element.innerHTML=buttonString;
+		element.className="btn btn-default row";
 		element.id="templateButton";
     element.onclick = sendData;
+    element.style.marginTop="1em";
+    element.style.marginBottom="1em";
 	
-    var foo = document.getElementById(location);
+    var foo = document.getElementById("onlyrdform");
     foo.appendChild(element);
 }
 
