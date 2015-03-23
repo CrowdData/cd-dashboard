@@ -1,6 +1,6 @@
 //holder
 function holderObject(){
-	this.EXPERIMENT;
+	this.EDITOR;
 	this.GRAPH;
 	this.RESPONSE;
 	this.DATASET_ID="";
@@ -56,7 +56,7 @@ if(questionID){
  header={"resourceURI":resourceURI,"questionURI":questionID};
 }
 var message="OK";
-var queryUri="http://crowddata.abdn.ac.uk/crowddata/1/tools/upload.rdfjson?ds="+datasetID;
+var queryUri="http://crowddata.abdn.ac.uk/crowddata/1/tools/upload.rdfjson?callback=json1234&ds="+datasetID;
 $.ajax({
    url: queryUri,
   type: "POST",
@@ -107,8 +107,8 @@ return true;
 }
 
 function sendDataAll(page,holder){
-console.log(JSON.stringify(holder.EXPERIMENT.graph.exportRDFJSON()));
-var rdfjson=holder.EXPERIMENT.graph.exportRDFJSON();
+console.log(JSON.stringify(holder.EDITOR.graph.exportRDFJSON()));
+var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
@@ -116,6 +116,7 @@ alert("Please note, fields highlighted in red are required : \n"+labels);
 }
 
 else{
+
 var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
 if(message.match("OK")){
 alert("Thank you for your contribution");
@@ -159,47 +160,59 @@ if (resourceURI.indexOf("failed")!=-1) {
 }
 
     require([
-        'rdforms/apps/Experiment',        //The editor User interface
+        'rdforms/view/Editor',
+		'rdforms/apps/Experiment',        //The editor User interface
         'rdforms/model/system',
 		 'rdfjson/Graph',
 		  'rdforms/model/Engine',
 		 'rdforms/template/ItemStore',
         'dojo/dom-attr',
         'dojo/domReady!'             //Wait until the dom is ready.
-            ], function (Experiment, system, Graph, Engine,ItemStore,domAttr) {
+            ], function (Editor,Experiment, system, Graph, Engine,ItemStore,domAttr) {
 			
 		holder.GRAPH=new Graph();	
-                holder.EXPERIMENT = new Experiment({ graph:holder.GRAPH,templateObj: templateSrc, resource:resourceURI, hideTemplate: true }, locationToLoad);
-                holder.EXPERIMENT.startup();
+             //   holder.EXPERIMENT = new Experiment({ graph:holder.GRAPH,templateObj: templateSrc, resource:resourceURI, hideTemplate: true }, locationToLoad);
+              //  holder.EXPERIMENT.startup();
 		$('#loading').addClass('hidden');
 		
 	//	$('#mandatoryDiv').removeClass('hidden');
 	//	$('#editorDiv').removeClass('hidden');
-		holder.template=holder.EXPERIMENT.template;
+	//	holder.template=holder.EXPERIMENT.template;
 	
-	applyStyling();
-	$('#onlyrdform').append($("#dijit__Widget_0").css('height','auto'));
+	//$('#onlyrdform').append($("#dijit__Widget_0").css('height','auto'));
+	
+	var itemStore=new ItemStore();
+			 var bundle = itemStore.registerBundle({source: templateSrc});
+			 holder.templateRoot=bundle.getRoot();
+	console.log("Creating editor");
+	holder.EDITOR=new Editor({
+            graph: holder.GRAPH,
+            resource: resourceURI,
+            template: holder.templateRoot,
+            compact: false
+        }, "onlyrdform");  
+	applyStyling();	
+	console.log("Editor should be created");
+	
 	addButton(buttonString);
 	$('#templateButton').removeClass('hidden');
 	
-			var itemStore=new ItemStore();
-			 var bundle = itemStore.registerBundle({source: templateSrc});
-			 holder.templateRoot=bundle.getRoot();
+			
 
      });
 };
 
 function applyStyling() {
 	$( ".rformsTopLevel.rformsRow" ).addClass( "row" );
-	$( ".rformsLabelRow" ).addClass( "row col-sm-10 " );
-	$( ".rformsFields" ).addClass( "row col-sm-10 " );
+	$( ".rformsLabelRow" ).addClass( "row col-sm-12 " );
+	$( ".rformsFields" ).addClass( "row col-sm-12 " );
 	//$( ".rformsRow" ).addClass( "row" );
 	$(".rformsFieldControl").addClass("col sm-1");
-	$(".rformsFieldControl").addClass("col sm-10");
+//	$(".rformsFieldControl").addClass("col sm-10");
 	
 	
-	$(".rforms.rformsEditor.compact").removeClass('compact');
-	
+	$(".rformsEditor.compact").removeClass('compact');
+	$("#onlyrdform").css('height','auto');
 	
 	
 }
@@ -215,18 +228,24 @@ function  reset(){
         'dojo/dom-attr',
         'dojo/domReady!'             //Wait until the dom is ready.
             ], function (Experiment, system, Graph, Engine,ItemStore,domAttr) {
-			
-		holder.GRAPH=new Graph();	
+			/*
+	
                 holder.EXPERIMENT.graph=holder.GRAPH;
 		holder.EXPERIMENT._rdfTab.setGraph(holder.GRAPH);
-		getUniqueResourceForDataset(holder);
+	
 		holder.EXPERIMENT.resource=holder.RESPONSE;
 		holder.EXPERIMENT._updateGraph();
                holder.EXPERIMENT._initEditor();
 	
 		applyStyling();
-	
-	
+	*/
+		holder.GRAPH=new Graph();	
+		getUniqueResourceForDataset(holder);
+		console.log("RESET URI"+holder.RESPONSE);
+	holder.EDITOR.show({template: holder.templateRoot, graph: holder.GRAPH, resource: holder.RESPONSE});
+	applyStyling();
+	addButton("Submit response");
+	$('#templateButton').removeClass('hidden');
 
      });
 };
@@ -239,7 +258,7 @@ function checkCardinality(holder){
         'dojo/domReady!'             //Wait until the dom is ready.
             ], function (Engine) {
 
-			var rootBinding = Engine.match(holder.EXPERIMENT.graph,holder.RESPONSE,holder.templateRoot);
+			var rootBinding = Engine.match(holder.EDITOR.graph,holder.RESPONSE,holder.templateRoot);
 			console.log("Engine match");
 			holder.report= rootBinding.report();			
 	

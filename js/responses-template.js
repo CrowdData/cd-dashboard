@@ -70,8 +70,8 @@ return questionDiv;
 
 //needs custom.js
 function sendData(){
-console.log(JSON.stringify(holder.EXPERIMENT.graph.exportRDFJSON()));
-var rdfjson=holder.EXPERIMENT.graph.exportRDFJSON();
+console.log(JSON.stringify(holder.EDITOR.graph.exportRDFJSON()));
+var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
@@ -79,6 +79,7 @@ alert("Please note, following fields are still required to be filled in: \n"+lab
 }
 
 else{
+
 var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
 if(message.match("OK")){
 alert("Your response was succesfuly received.");
@@ -87,10 +88,11 @@ $('#responsesDiv').empty();
 $('#responsesID'+i++).attr('id','responsesID'+i);
 $('#responsesID'+i).empty();
 $('#newResponse').show();
-$('#responsesDiv').css({'opacity':0}).animate({'opacity':1});*/
+$('#responsesDiv').css({'opacity':0}).animate({'opacity':1});
 //getData(questionID); //reload?
 
 //reload
+*/
 reset();
 document.location.href="#top";
 getData(questionID);
