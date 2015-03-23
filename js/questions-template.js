@@ -51,7 +51,7 @@ if (id%2==0) {
 	questionDiv.addClass('even');	
 }
 
-var questionCol=$('<div class=\'col-xs-9 col-md-9\'></div>').appendTo(questionDiv);
+var questionCol=$('<div class=\'col-xs-12 col-md-9\'></div>').appendTo(questionDiv);
 var buttonCol=$('<div class=\'col-xs-3 col-md-3\'></div>').appendTo(questionDiv);
 
 

@@ -53,8 +53,9 @@
 				   <h5 class="data-display">Author: [@author]</h1>
           </div>
       </div>
-	 <div  id="top"></div>
+	
 	    <div class="main container">
+		 <div  id="top"></div>
 		<a class='btn btn-success center' id='newResponse' href="#onlyrdform"'>Answer this question</a>
 	<div id="responsesDiv" class="container"></div>
     
@@ -70,7 +71,7 @@
 		
 		
 		
-		
+	    </div>
 	
 	
 	

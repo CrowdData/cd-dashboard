@@ -30,6 +30,10 @@ var prefixes = "PREFIX dc: <http://purl.org/dc/elements/1.1/>\
 function initialize() {
     getMap();
     getLocations();
+   
+
+   
+   
 }
 function getMap() {
 
@@ -80,10 +84,22 @@ function getMap() {
                     }
                 }
 
-                if (navigator.geolocation) {
-                    console.log("Location was activated...");
-                    navigator.geolocation.getCurrentPosition(UserLocation);
-                }
+                  if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+               console.log("Location position success");
+			   UserLocation(position);
+                },
+                function() {
+                 alert("Could not retrieve your location, make sure your GPS location sharing is enabled");
+                }, {
+                    enableHighAccuracy: true,
+                    timeout: 30000, 
+                    maximumAge: 30000
+                });
+        } else {
+           alert("We apologise, but it seems your browser does not support location sharing");
+        }
 
 
             }
@@ -190,7 +206,8 @@ function getMap() {
             },
             
             error: function (xhr, textStatus, errorThrown) {
-                alert("Error:" + textStatus); alert("Error" + errorThrown);
+              // sometimes it display error had to comment this out. 
+			  //			  alert("Error:" + textStatus); alert("Error" + errorThrown);
             }
         });
     }
