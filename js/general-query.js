@@ -55,7 +55,7 @@ var prefixes = "PREFIX dc: <http://purl.org/dc/elements/1.1/>\
                         var table = $(tableID);
 						//Styling for table from boostrap
 						$(tableID).addClass('table table-striped');
-                                                $('tableTitle').removeClass('hidden');
+                        $('#tableTitle').removeClass('hidden');
 						
                         var headerVars = data.head.vars;
 						var bindings=data.results.bindings;
@@ -149,7 +149,7 @@ return regexp.test(s);
                         var table = $(tableID);
 						//Styling for table from boostrap
 						$(tableID).addClass('table table-striped');
-                                                $('tableTitle').removeClass('hidden');
+                        $('#tableTitle').removeClass('hidden');
 						
                         var headerVars = data.head.vars;
 						var bindings=data.results.bindings;

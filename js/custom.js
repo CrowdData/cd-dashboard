@@ -175,12 +175,12 @@ if (resourceURI.indexOf("failed")!=-1) {
               //  holder.EXPERIMENT.startup();
 		$('#loading').addClass('hidden');
 		
-	//	$('#mandatoryDiv').removeClass('hidden');
+	
 	//	$('#editorDiv').removeClass('hidden');
 	//	holder.template=holder.EXPERIMENT.template;
 	
 	//$('#onlyrdform').append($("#dijit__Widget_0").css('height','auto'));
-	
+$('#mandatoryDiv').removeClass('hidden');
 	var itemStore=new ItemStore();
 			 var bundle = itemStore.registerBundle({source: templateSrc});
 			 holder.templateRoot=bundle.getRoot();

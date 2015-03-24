@@ -62,15 +62,14 @@
       </div>
 	    <div class="main container">
 	
-    
-	<div id='onlyrdform'></div>
-	<div id="_editor" class="hidden">
-	    <div id="mandatoryDiv" class="hidden">
+   <div id="mandatoryDiv" class="hidden">
 		  <p>[@templateMessage]</p>
 </div>
+	<div id='onlyrdform'></div>
+
 		<div id="[@templateTitle]Div" class="hidden"></div>
 	
-		</div>
+
 		<div id="loading" class="col-md-12 text-center vcenter">
 	<h2 class="data-display capitalize">Loading [@templateMessageTitle] ...</h2><br>
         <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
