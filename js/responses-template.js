@@ -19,6 +19,7 @@ query(replyQuery,loadReplies);
 	
 	
 	function getTemplate(templateID,loc,datasetID,question){
+	$('body').addClass('loading');
 	console.log("questionID:"+questionID);
 	assignQuestionID(question);
 	console.log("questionID after assing"+questionID);
@@ -79,8 +80,9 @@ alert("Please note, following fields are still required to be filled in: \n"+lab
 }
 
 else{
-
+$('body').addClass('loading');
 var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
+$('body').removeClass('loading');
 if(message.match("OK")){
 alert("Your response was succesfuly received.");
 /*
