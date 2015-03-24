@@ -50,7 +50,6 @@ questionID=id;
 
 function postRDFJSON(rdfjson,datasetID,resourceURI)
 {
-$('body').addClass("loading");
 var header={"resourceURI":resourceURI};
 console.log("Question ID before send:"+questionID);
 if(questionID){
@@ -74,7 +73,6 @@ $.ajax({
 
     }
 });
-$('body').removeClass("loading");
 return message;
 };
 
@@ -115,13 +113,13 @@ var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
-$('body').removeClass("loading");
 alert("Please note, fields highlighted in red are required : \n"+labels);
 }
 
 else{
-
+$('body').addClass('loading');
 var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
+$('body').removeClass('loading');
 if(message.match("OK")){
 alert("Thank you for your contribution");
 document.location.href="/dashboard/"+page+"-view.php";
@@ -200,6 +198,7 @@ $('#mandatoryDiv').removeClass('hidden');
 	
 	addButton(buttonString);
 	$('#templateButton').removeClass('hidden');
+	$('body').removeClass('loading');
 	
 			
 
