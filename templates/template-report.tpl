@@ -9,14 +9,14 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard-general.css" rel="stylesheet">
     <link href="css/dashboard-[@templateTitle].css" rel="stylesheet">
-
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link type="text/css" href="release/dijit/themes/claro/claro.css" rel="stylesheet" />
     <link type="text/css" href="release/rdforms/view/resources/rdforms.css" rel="stylesheet" />
     <script src="release/dojo/dojo.js"></script>
  
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<script src="js/custom.js"></script>
 	<script src="js/[@templateTitle]-template.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
@@ -86,6 +86,7 @@
 	 <div class="container-fluid data-display-footer">
 
       </div>
+	  <div class="modal">Blaaa</div>
 </body>
 	
 	
