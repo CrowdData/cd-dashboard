@@ -52,6 +52,7 @@
                <h2>Campus Map</h2>
 			  <p> Provides you with real-time TumTum bus locations, latest demand and disruptions </p>
                 <p><a href="map.php">View Map</a></p>
+				<br/>
 				</div>
 		  
 		  
