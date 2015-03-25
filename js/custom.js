@@ -108,23 +108,25 @@ return true;
 }
 
 function sendDataAll(page,holder){
+$('body').addClass('loading');
 console.log(JSON.stringify(holder.EDITOR.graph.exportRDFJSON()));
 var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
+$('body').removeClass('loading');
 alert("Please note, fields highlighted in red are required : \n"+labels);
 }
 
 else{
-$('body').addClass('loading');
 var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
-$('body').removeClass('loading');
 if(message.match("OK")){
+$('body').removeClass('loading');
 alert("Thank you for your contribution");
 document.location.href="/dashboard/"+page+"-view.php";
 }
 else {
+$('body').removeClass('loading');
 	console.log("Error"+message);
 	if (message.indexOf("IllegalArgumentException")!=-1) {
 		alert("The form cannot be empty.");

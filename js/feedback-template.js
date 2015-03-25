@@ -2,6 +2,7 @@
 
 // called when page loaded
 function getData() {
+$('body').addClass('loading');
  var feedbackQuery ="SELECT    ?Feedback_Provider ?Feedback \
                                                     WHERE\
                                                     { \
@@ -16,6 +17,7 @@ query(feedbackQuery,handleTable);
 
 	
 	function getTemplate(datasetID,loc){
+	$('body').addClass('loading');
 	holder.DATASET_ID=datasetID;
 	getUniqueResourceForDataset(holder);
 	console.log("Response:"+holder.RESPONSE);

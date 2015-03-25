@@ -2,6 +2,7 @@
 
 // called when page loaded
 function getData() {
+$('body').addClass('loading');
  var demandQuery ="SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \

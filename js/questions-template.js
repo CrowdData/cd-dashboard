@@ -2,6 +2,7 @@
 
 
 function getData() {
+$('body').addClass('loading');
  var questionsQuery ="SELECT *\
                       WHERE\
                       { \
@@ -36,6 +37,13 @@ var result=query(questionsQuery,loadQuestions);
 	
 function loadQuestions(data){
 console.log("Data in template"+JSON.stringify(data));
+$('body').removeClass('loading');
+
+  if (!data.results.bindings[0]) {
+                 $('#questionsDiv').append("<p>No information provided ...</p>");
+               return;
+		 }
+
 var bindings=data.results.bindings;
 for(var id in bindings){
 var row=bindings[id];
@@ -73,6 +81,7 @@ function addQuestion(){
 
 
 function sendData(){
+//page to redirect, holder of data
 sendDataAll('questions',holder);
 }
 

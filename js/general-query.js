@@ -140,7 +140,9 @@ return regexp.test(s);
 			
 			function handleTable(data){
 			var tableID="#data-table";
-			$('#loading').addClass('hidden');
+			//$('#loading').addClass('hidden');
+			$('body').removeClass('loading');
+			
                                 if (!data.results.bindings[0]) {
                                      $(tableID).append("<p>No information provided ...</p>");
                                      return;
