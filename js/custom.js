@@ -154,7 +154,7 @@ function  loadGraph(templateSrc, resourceURI, locationToLoad, holder, buttonStri
 
 
 if (resourceURI.indexOf("failed")!=-1) {
-	$('#loading').addClass('hidden');
+	$('body').removeClass('loading');
 	$('#errorDiv').append("Unable to load form.Check your connection.");
 	$('#errorDiv').removeClass('hidden');
 	return;
