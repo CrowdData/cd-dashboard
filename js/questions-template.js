@@ -20,6 +20,7 @@ var result=query(questionsQuery,loadQuestions);
 	
 	function getTemplate(datasetID,loc){
 	//getData(); did not work for questions (RDForms layout issues)
+	$('body').addClass('loading');
 	holder.DATASET_ID=datasetID;
 	holder.templateID=datasetID;
 	getUniqueResourceForDataset(holder);
@@ -40,7 +41,7 @@ console.log("Data in template"+JSON.stringify(data));
 $('body').removeClass('loading');
 
   if (!data.results.bindings[0]) {
-                 $('#questionsDiv').append("<p>No information provided ...</p>");
+                 $('#questionsDiv').append("<p>Be first to ask a question to IITB community.</p>");
                return;
 		 }
 
@@ -70,15 +71,6 @@ var replyButton=$('<a class=\'btn btn-success\' href=responses-view.php?id='+esc
 container.append(questionDiv);
 
 }
-
-
-function addQuestion(){
-	$('#newQuestion').hide();
-	loadGraph(TemplateProvider.getTemplate(holder.templateID), holder.RESPONSE, "questionsID", holder );
-	addButton("questionsID","Submit your question");
-	
-	}
-
 
 function sendData(){
 //page to redirect, holder of data

@@ -44,7 +44,7 @@ function loadReplies(data){
 $('body').removeClass('loading');
 			
         if (!data.results.bindings[0]) {
-                 $('#responsesDiv').append("<p>No information provided ...</p>");
+                 $('#responsesDiv').append("<p>Be the first to answer this question...</p>");
                return;
 		 }
 console.log("REPLIES"+JSON.stringify(data));

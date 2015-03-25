@@ -72,7 +72,7 @@
 		    <h2>Response form</h2>
 		<div id="onlyrdform" class="container"></div>
 		
-		<div id="errorDiv" class="alert alert-danger hidden"></div>
+		<div id="errorDiv" class="alert alert-danger hidden"></div> 
 		
 		
 		
