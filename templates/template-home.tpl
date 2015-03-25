@@ -38,8 +38,8 @@
 <div class="row">		  
               <h1 >IIT Bombay Life</h1>
               <p>Providing a snapshot of life on the IITB campus</p>
-              <p>The IIT Bombay view provides information about various aspects of the campus.
-              Click on any of the "View" links below to see the latest information for the different categories, or click "Report" to provide some.</p>
+              <p>The IIT Bombay Life provides information about various aspects of the campus.
+              You can view, report or provide any information related to events,disruptions and demand by clicking on any of the links located below. You are also able to ask questions and provide answers to IITB community.</p>
           </div>
 
       </div>
