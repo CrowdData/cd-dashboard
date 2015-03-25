@@ -22,7 +22,7 @@ function getDemand(name, content, marker) {
                 for (var i in bindings) {
                     var demandData = data.results.bindings[i];
                     var date=parseXSDDateString(demandData["Date"]["value"]);
-                    content +="Status: <b>"+demandData["Demand"]["value"] + '</b> on '+days[date.getDay()]+ ' at ' + date.toLocaleTimeString() + '<br/>';
+                    content +="Number of passengers: <b>"+demandData["Demand"]["value"] + '</b> on '+days[date.getDay()]+ ' at ' + date.toLocaleTimeString() + '<br/>';
 
                 }
 

@@ -535,27 +535,31 @@
                 "type": "choice",
                 "property": "http://xmlns.com/foaf/0.1/DemandPersonLocation",
                 "label": {
-                    "en": "Demand at the stop"
+                    "en": "Number of passengers at the stop"
                 },
                 "description": {
-                    "en": "Demand at each stop"},
+                    "en": "Number of passengers at the stop"},
                 "choices": [
     		   {
-      			"value": "None",
+      			"value": "0",
       			"label": {
-        		"en": "None"
+        		"en": "Empty stop"
       			}
     		   },{
-      			"value": "Few",
+      			"value": "1 to 5",
       			"label": {
-        		"en": "Few"
+        		"en": "Between 1 to 5"
       			}
     		   },{
-			"value":"Little Crowded",
-			"label" : {"en":"Little Crowded"}
+			"value":"6 to 10",
+			"label" : {"en":"Between 6 to 10"}
 		   },{	
-			"value":"Very Crowded",
-			"label": {"en" : "Very Crowded"}
+			"value":"11 to 20",
+			"label": {"en" : "Between 11 to 20"}
+	           },
+			   {	
+			"value":"21 and over",
+			"label": {"en" : "Over 21"}
 	           }
   	   	],
   		"cardinality": {
