@@ -108,7 +108,7 @@ return true;
 }
 
 function sendDataAll(page,holder){
-$('body').addClass('loading');
+$('body').addClass('loading'); //loading
 console.log(JSON.stringify(holder.EDITOR.graph.exportRDFJSON()));
 var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
