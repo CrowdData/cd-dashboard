@@ -2,6 +2,7 @@
 
 
 function getData(questionID) {
+$('body').addClass('loading');
  var replyQuery ="SELECT *\
                       WHERE\
                       { \
@@ -38,7 +39,7 @@ query(replyQuery,loadReplies);
 	
 
 	};
-
+var author;
 function loadReplies(data){
 $('body').removeClass('loading');
 			
@@ -90,43 +91,22 @@ alert("Please note, following fields are still required to be filled in: \n"+lab
 }
 
 else{
-var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
-if(message.match("OK")){
+postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE,function(success){
 $('body').removeClass('loading');
-alert("Your response was succesfuly received.");
-/*
-$('#responsesDiv').empty();
-$('#responsesID'+i++).attr('id','responsesID'+i);
-$('#responsesID'+i).empty();
-$('#newResponse').show();
-$('#responsesDiv').css({'opacity':0}).animate({'opacity':1});
-//getData(questionID); //reload?
-
-//reload
-*/
 reset();
 document.location.href="#top";
 getData(questionID);
-
-
-
-
-}
-else {
+},function(error){
 $('body').removeClass('loading');
-	console.log("Error"+message);
-	if (message.indexOf("IllegalArgumentException")!=-1) {
-		alert("The form cannot be empty.");
-	}
-	else if(message.indexOf("RiotException")!=-1){
-alert("Please make sure your links start with http:// prefix\n http://www.iitb.abdn.ac.uk");
-	}
-	else{
-		alert("Error");
-	}
+isComplete(holder);
+alert("We apologies, but something went wrong when saving your response:"+error.responseText);
+
+});
+
+
 }
 }
-}
+
 
 
 

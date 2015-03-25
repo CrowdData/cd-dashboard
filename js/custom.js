@@ -48,7 +48,7 @@ function assignQuestionID(id){
 questionID=id;
 }
 
-function postRDFJSON(rdfjson,datasetID,resourceURI)
+function postRDFJSON(rdfjson,datasetID,resourceURI,successFunction,errorFunction)
 {
 var header={"resourceURI":resourceURI};
 console.log("Question ID before send:"+questionID);
@@ -56,24 +56,21 @@ if(questionID){
 //alert("questionID exist before sending");
  header={"resourceURI":resourceURI,"questionURI":questionID};
 }
-var message="OK";
 var queryUri="http://crowddata.abdn.ac.uk/crowddata/1/tools/upload.rdfjson?callback=json1234&ds="+datasetID;
 $.ajax({
    url: queryUri,
   type: "POST",
   headers:header,   //questionID quickHack.
-  data: JSON.stringify(rdfjson),   
-  async:false,  
+  data: JSON.stringify(rdfjson),     
   contentType: 'application/rdf+json',
   success:function(data) {    
-  console.log(JSON.stringify(data));
+  successFunction(data);
   },
  error: function(XMLError) { 
- message=XMLError.responseText;
+ errorFunction(XMLError);
 
     }
 });
-return message;
 };
 
 var labels="";
@@ -119,28 +116,22 @@ alert("Please note, fields highlighted in red are required : \n"+labels);
 }
 
 else{
-var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
-if(message.match("OK")){
+postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE,function(success){
 $('body').removeClass('loading');
-alert("Thank you for your contribution");
+alert("Thank you for your contribution.");
 document.location.href="/dashboard/"+page+"-view.php";
-}
-else {
+},function(error){
 $('body').removeClass('loading');
-	console.log("Error"+message);
-	if (message.indexOf("IllegalArgumentException")!=-1) {
-		alert("The form cannot be empty.");
-	}
-	else if(message.indexOf("RiotException")!=-1){
-alert("Please make sure your links start with http:// prefix\n http://www.iitb.abdn.ac.uk");
-	}
-	else{
-		alert("Thank you for your contribution.");
-		document.location.href="/dashboard/"+page+"-view.php";
-	}
+isComplete(holder);
+alert("We apologise, but something went wrong when saving your data: Network connection?");
+});
+
+
 }
 }
-}
+
+
+
 
 function showError(error,message) {
 	console.log("showErrorTriggered"+message);

@@ -2,6 +2,7 @@
 
 // called when page loaded
 function getData() {
+$('body').addClass('loading');
  var eventQuery ="SELECT ?Event_Name  ?Date_Start  ?Date_End ?Department ?about ?Website \
                                                     WHERE\
                                                     { \
