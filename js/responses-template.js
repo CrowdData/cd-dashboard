@@ -2,6 +2,7 @@
 
 
 function getData(questionID) {
+$('body').addClass('loading');
  var replyQuery ="SELECT *\
                       WHERE\
                       { \
@@ -28,16 +29,24 @@ query(replyQuery,loadReplies);
 	
 	getData(questionID);
 	getUniqueResourceForDataset(holder);
+	if(holder.RESPONSE==="failed"){
+	alert("Failed get URI, cannot create form");
+	return;
+	}
 	loadGraph(TemplateProvider.getTemplate(holder.templateID), holder.RESPONSE, "responsesID", holder,"Submit answer" );
 	console.log("Response:"+holder.RESPONSE);
-	if(holder.RESPONSE==="failed"){
-	alert("Failed get URI");
-	}
+	
 	
 
 	};
-
+var author;
 function loadReplies(data){
+$('body').removeClass('loading');
+			
+        if (!data.results.bindings[0]) {
+                 $('#responsesDiv').append("<p>No information provided ...</p>");
+               return;
+		 }
 console.log("REPLIES"+JSON.stringify(data));
 var bindings=data.results.bindings;
 var container=$('#responsesDiv');
@@ -71,52 +80,33 @@ return questionDiv;
 
 //needs custom.js
 function sendData(){
+$('body').addClass('loading');
 console.log(JSON.stringify(holder.EDITOR.graph.exportRDFJSON()));
 var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
+$('body').removeClass('loading');
 alert("Please note, following fields are still required to be filled in: \n"+labels);
 }
 
 else{
-$('body').addClass('loading');
-var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
+postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE,function(success){
 $('body').removeClass('loading');
-if(message.match("OK")){
-alert("Your response was succesfuly received.");
-/*
-$('#responsesDiv').empty();
-$('#responsesID'+i++).attr('id','responsesID'+i);
-$('#responsesID'+i).empty();
-$('#newResponse').show();
-$('#responsesDiv').css({'opacity':0}).animate({'opacity':1});
-//getData(questionID); //reload?
-
-//reload
-*/
 reset();
 document.location.href="#top";
 getData(questionID);
+},function(error){
+$('body').removeClass('loading');
+isComplete(holder);
+alert("We apologies, but something went wrong when saving your response:Network connection?");
 
-
+});
 
 
 }
-else {
-	console.log("Error"+message);
-	if (message.indexOf("IllegalArgumentException")!=-1) {
-		alert("The form cannot be empty.");
-	}
-	else if(message.indexOf("RiotException")!=-1){
-alert("Please make sure your links start with http:// prefix\n http://www.iitb.abdn.ac.uk");
-	}
-	else{
-		alert("Error");
-	}
 }
-}
-}
+
 
 
 

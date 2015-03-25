@@ -2,6 +2,7 @@
 
 // called when page loaded
 function getData() {
+$('body').addClass('loading');
  var demandQuery ="SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \
@@ -17,6 +18,7 @@ query(demandQuery,handleTable);
 
 	
 	function getTemplate(datasetID,loc){
+	$('body').addClass('loading');
 	holder.DATASET_ID=datasetID;
 	getUniqueResourceForDataset(holder);
 	console.log("Response:"+holder.RESPONSE);

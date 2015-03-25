@@ -2,6 +2,7 @@
 
 // called when page loaded
 function getData() {
+$('body').addClass('loading');
  var eventQuery ="SELECT ?Event_Name  ?Date_Start  ?Date_End ?Department ?about ?Website \
                                                     WHERE\
                                                     { \
@@ -19,6 +20,7 @@ query(eventQuery,handleTable);
 }
 	
 	function getTemplate(datasetID,loc){
+	$('body').addClass('loading');
 	holder.DATASET_ID=datasetID;
 	getUniqueResourceForDataset(holder);
 	console.log("Response:"+holder.RESPONSE);

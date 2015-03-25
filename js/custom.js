@@ -48,7 +48,7 @@ function assignQuestionID(id){
 questionID=id;
 }
 
-function postRDFJSON(rdfjson,datasetID,resourceURI)
+function postRDFJSON(rdfjson,datasetID,resourceURI,successFunction,errorFunction)
 {
 var header={"resourceURI":resourceURI};
 console.log("Question ID before send:"+questionID);
@@ -56,37 +56,30 @@ if(questionID){
 //alert("questionID exist before sending");
  header={"resourceURI":resourceURI,"questionURI":questionID};
 }
-var message="OK";
 var queryUri="http://crowddata.abdn.ac.uk/crowddata/1/tools/upload.rdfjson?callback=json1234&ds="+datasetID;
 $.ajax({
    url: queryUri,
   type: "POST",
   headers:header,   //questionID quickHack.
-  data: JSON.stringify(rdfjson),   
-  async:false,  
+  data: JSON.stringify(rdfjson),     
   contentType: 'application/rdf+json',
   success:function(data) {    
-  console.log(JSON.stringify(data));
+  successFunction(data);
   },
  error: function(XMLError) { 
- message=XMLError.responseText;
+ errorFunction(XMLError);
 
     }
 });
-return message;
 };
 
 var labels="";
 function isComplete(holder){
 labels="";
+resetFormValid();
 if (holder.report.errors.length>0) {
-$('.rformsLabel').each(function(i){
-		
-	this.style.color="black";	
-		
-		
-	});
-	
+
+
 	for (index = 0; index < holder.report.errors.length; ++index) {
 		var label=holder.report.errors[index].item._source.label.en;
 	labels+=label+"\n";
@@ -106,39 +99,41 @@ return false;
 }
 return true;
 }
+function resetFormValid(){
+$('.rformsLabel').each(function(i){		
+	this.style.color="black";	
+	});
+
+}
 
 function sendDataAll(page,holder){
+$('body').addClass('loading'); //loading
 console.log(JSON.stringify(holder.EDITOR.graph.exportRDFJSON()));
 var rdfjson=holder.EDITOR.graph.exportRDFJSON();
 
 checkCardinality(holder);
 if (!isComplete(holder)) {
+$('body').removeClass('loading');
 alert("Please note, fields highlighted in red are required : \n"+labels);
 }
 
 else{
-$('body').addClass('loading');
-var message=postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE);
+postRDFJSON(rdfjson,holder.DATASET_ID,holder.RESPONSE,function(success){
 $('body').removeClass('loading');
-if(message.match("OK")){
-alert("Thank you for your contribution");
+alert("Thank you for your contribution.");
 document.location.href="/dashboard/"+page+"-view.php";
-}
-else {
-	console.log("Error"+message);
-	if (message.indexOf("IllegalArgumentException")!=-1) {
-		alert("The form cannot be empty.");
-	}
-	else if(message.indexOf("RiotException")!=-1){
-alert("Please make sure your links start with http:// prefix\n http://www.iitb.abdn.ac.uk");
-	}
-	else{
-		alert("Thank you for your contribution.");
-		document.location.href="/dashboard/"+page+"-view.php";
-	}
+},function(error){
+$('body').removeClass('loading');
+isComplete(holder);
+alert("We apologise, but something went wrong when saving your data: Network connection?");
+});
+
+
 }
 }
-}
+
+
+
 
 function showError(error,message) {
 	console.log("showErrorTriggered"+message);
@@ -154,7 +149,7 @@ function  loadGraph(templateSrc, resourceURI, locationToLoad, holder, buttonStri
 
 
 if (resourceURI.indexOf("failed")!=-1) {
-	$('#loading').addClass('hidden');
+	$('body').removeClass('loading');
 	$('#errorDiv').append("Unable to load form.Check your connection.");
 	$('#errorDiv').removeClass('hidden');
 	return;

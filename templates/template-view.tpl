@@ -43,10 +43,6 @@
 
      <div class="container data-display-content ">     
 			<div class="table-responsive">
-			  		<div id="loading" class="col-md-12 text-center vcenter">
-	<h2 class="data-display capitalize">Loading [@templateTableTitle] ...</h2><br>
-        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-    </div>
 			<div class="col-md-12">		  
 		<table id="data-table">
 		  <p id="tableTitle" class="center hidden">[@tableMessage]</p>
@@ -61,7 +57,7 @@
           </div>
       </div>
       
-      
+      <div class="modal"></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

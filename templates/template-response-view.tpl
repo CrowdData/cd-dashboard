@@ -68,12 +68,8 @@
 		<a class='btn btn-success center' id='newResponse' href="#onlyrdform"'>Answer this question</a>
 	<div id="responsesDiv" class="container"></div>
     
-
-	<div id="_editor" class="hidden">		
-			<div id="[@templateID]ID"></div>
-		</div>
 	
-		    <p>Response form</p>
+		    <h2>Response form</h2>
 		<div id="onlyrdform" class="container"></div>
 		
 		<div id="errorDiv" class="alert alert-danger hidden"></div>
@@ -89,6 +85,7 @@
 
           </div>
       </div>
+	  <div class="modal"></div>
 </body>
 	
 	

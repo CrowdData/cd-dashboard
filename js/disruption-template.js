@@ -2,6 +2,7 @@
 
 // called when page loaded
 function getData() {
+$('body').addClass('loading');
  var disruptionQuery ="SELECT  ?Disruption_Description  ?Near_Bus_Stop ?Occurence_At ?Picture_link \
                                                     WHERE\
                                                     { \
@@ -18,6 +19,7 @@ query(disruptionQuery,handleTable);
 
 	
 	function getTemplate(datasetID,loc){
+	$('body').addClass('loading');
 	holder.DATASET_ID=datasetID;
 	getUniqueResourceForDataset(holder);
 	console.log("Response:"+holder.RESPONSE);

@@ -2,10 +2,7 @@
 	
 	include("templates/template.class.php");
 	
-	/**
-	 * Creates a new template for the user's profile.
-	 * Fills it with mockup data just for testing.
-	 */
+
 	$menu = new Template("templates/template-menu.tpl");
 	
 	$layout = new Template("templates/template-response-view.tpl");
