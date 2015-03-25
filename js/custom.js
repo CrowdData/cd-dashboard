@@ -76,14 +76,10 @@ $.ajax({
 var labels="";
 function isComplete(holder){
 labels="";
+resetFormValid();
 if (holder.report.errors.length>0) {
-$('.rformsLabel').each(function(i){
-		
-	this.style.color="black";	
-		
-		
-	});
-	
+
+
 	for (index = 0; index < holder.report.errors.length; ++index) {
 		var label=holder.report.errors[index].item._source.label.en;
 	labels+=label+"\n";
@@ -102,6 +98,12 @@ $('.rformsLabel').each(function(i){
 return false;
 }
 return true;
+}
+function resetFormValid(){
+$('.rformsLabel').each(function(i){		
+	this.style.color="black";	
+	});
+
 }
 
 function sendDataAll(page,holder){

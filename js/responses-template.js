@@ -99,7 +99,7 @@ getData(questionID);
 },function(error){
 $('body').removeClass('loading');
 isComplete(holder);
-alert("We apologies, but something went wrong when saving your response:"+error.responseText);
+alert("We apologies, but something went wrong when saving your response:Network connection?");
 
 });
 
