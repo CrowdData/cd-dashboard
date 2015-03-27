@@ -11,7 +11,8 @@
 	$layout->set("templateMessageTitle","new question");
 	$layout->set("templateMessage","Please use the form below to ask a question");
 	$layout->set("menu", $menu->output());
-	
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	
 	echo $layout->output();
 	

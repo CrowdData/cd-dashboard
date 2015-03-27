@@ -25,6 +25,7 @@ query(disruptionQuery,handleTable);
 	console.log("Response:"+holder.RESPONSE);
 	if(holder.RESPONSE==="failed"){
 	alert("Failed get URI");
+	
 	}
 	
 	loadGraph(TemplateProvider.getTemplate(datasetID), holder.RESPONSE, loc, holder ,"Submit report");

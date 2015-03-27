@@ -18,7 +18,8 @@
 	$layout->set("datasetID","demand");
 	$layout->set("provideButton","current TumTum demand");
 	$layout->set("menu", $menu->output());
-	
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	/**
 	 * Outputs the page with the user's profile.
 	 */

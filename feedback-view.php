@@ -13,7 +13,8 @@
 	$layout->set("tableMessage","This table displays the feedback on the dashboard provided by users");
 	$layout->set("provideButton","feedback");
 	$layout->set("menu", $menu->output());
-	
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	echo $layout->output();
 	
 ?>

@@ -18,9 +18,7 @@
 	$layout->set("datasetID","events");
 	$layout->set("provideButton","details of event");
 	$layout->set("menu", $menu->output());
-	
-	/**
-	 * Outputs the page with the user's profile.
-	 */
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	echo $layout->output();
 ?>

@@ -28,16 +28,7 @@
    
 <script src="js/Leaflet.MakiMarkers.js"></script>
     
-    <script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-61133382-1', 'auto');
-  ga('send', 'pageview');
-
-    </script>
+ [@analytics]
     
     
   </head>
@@ -59,7 +50,7 @@
    
      var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
              '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+             'Imagery  <a href="http://mapbox.com">Mapbox</a>',
          mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
 
      var streets = L.tileLayer(mbUrl, { id: 'sandy1401j.kkfo49n8', attribution: mbAttr });

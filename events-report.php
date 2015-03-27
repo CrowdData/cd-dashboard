@@ -11,7 +11,8 @@
 	$layout->set("templateMessage","Please use the form below to provide details of an event .");
 	$layout->set("datasetID","events");
 	$layout->set("menu", $menu->output());
-	
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	
 	echo $layout->output();
 	

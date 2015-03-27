@@ -13,8 +13,8 @@
 	
 	
 	$layout->set("menu", $menu->output());
-	
-	
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	echo $layout->output();
 	
 ?>

@@ -18,10 +18,10 @@
 	$layout->set("templateTableTitle","Disruptions on Campus");
 	$layout->set("provideButton","details of a disruption");
 	$layout->set("menu", $menu->output());
-	
-	/**
-	 * Outputs the page with the user's profile.
-	 */
+    $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
+	  $analytics=new Template("templates/template-analytics.tpl");
+    $layout->set("analytics",$analytics->output());
 	echo $layout->output();
 	
 ?>
