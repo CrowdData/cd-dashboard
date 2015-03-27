@@ -36,6 +36,12 @@
       </div>
 
      <div class="container  display-content ">     
+          <div class="row   box tumtum-demand-box">
+                <h2>Test TumTum Demand</h2>
+				<p>Details of TumTum demand on the campus.</p>
+                <p><a href="pages/demand-report.html">Report</a></p>
+             </div>
+         
          
           <div class="row">
 		  <div class="col-sm-6">
