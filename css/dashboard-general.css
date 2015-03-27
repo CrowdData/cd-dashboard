@@ -70,3 +70,29 @@ body.loading .modal {
 
 
 
+
+#submitButton {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: none;
+    
+}
+
+
+
+
+
+
+#onlyrdform {
+    display: none;
+}
+
+.shadow {
+    -webkit-box-shadow: 11px 11px 24px -8px rgba(0,0,0,0.75);
+-moz-box-shadow: 11px 11px 24px -8px rgba(0,0,0,0.75);
+box-shadow: 11px 11px 24px -8px rgba(0,0,0,0.75);
+}
+
+#errorDiv {
+    display:none;
+}
