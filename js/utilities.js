@@ -18,14 +18,15 @@ $('body').removeClass('loading');
 } 
 
 function showForm(message){
-   $(rdformDiv).fadeIn('slow');
-    $(submitButton).fadeIn('slow');
+
+   $(rdformDiv).animate({"opacity":1});
+    $(submitButton).animate({"opacity":1});
 }
 
 
 function hideForm(){
-   $(rdformDiv).fadeOut('slow');
-    $(submitButton).fadeOut('slow');
+   $(rdformDiv).animate({"opacity":0});
+    $(submitButton).animate({"opacity":0});
 }
 
 
