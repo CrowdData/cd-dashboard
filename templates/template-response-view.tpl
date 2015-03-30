@@ -56,7 +56,7 @@
 	
 	    <div class="main container">
 		 <div  id="top"></div>
-		<a class='btn btn-success center' id='newResponse' href="#onlyrdform"'>Answer this question</a>
+		<a class='btn btn-success center' id='newResponse' href="#onlyrdform">Answer this question</a>
 	<div id="responsesDiv" class="container"></div>
     
 	

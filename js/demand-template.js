@@ -14,7 +14,8 @@ $('body').addClass('loading');
                                                     } ORDER BY DESC(?Date)";
 query(demandQuery,handleTable);
 			
-}
+}}
+
 
 	
 	function getTemplate(datasetID,loc){
