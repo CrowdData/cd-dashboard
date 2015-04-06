@@ -24,6 +24,7 @@
     <script src='js/general-map.js'></script>
     <script src='js/loadData.js'></script>
     <script src='js/general-query.js'></script>
+      <script src='js/utilities.js'></script>
   <link href='css/leaflet.css' rel='stylesheet' />
    
 <script src="js/Leaflet.MakiMarkers.js"></script>

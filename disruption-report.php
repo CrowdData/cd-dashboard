@@ -7,12 +7,12 @@
     $analytics=new Template("templates/template-analytics.tpl");
 
     $layout->set("datasetID","disruption");
-    $layout->set("templateID","http://crowddata.abdn.ac.uk/ontologies/cd/0.1/Disruption");
-    $layout->set("headerContent","Provide details of a disruption.");
-    $layout->set("pageTitle", "Disruption report");
-	$layout->set("templateMessage","Please use the form below to provide details of a disruption (unexpected event).");
-	
-    $layout->set("button","Report disruption");
+    $layout->set("templateID","http://crowddata.abdn.ac.uk/def/incidents/Report");
+    $layout->set("headerContent","Provide details of an incident.");
+    $layout->set("pageTitle", "Incident report");
+	$layout->set("templateMessage","Please use the form below to provide details of an incident (unexpected event).");
+	$layout->set("cssfilename", "dashboard-disruption");
+    $layout->set("button","Report incident");
 	
 	$layout->set("menu", $menu->output());
     $layout->set("analytics",$analytics->output());

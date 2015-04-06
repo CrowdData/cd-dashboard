@@ -2,26 +2,23 @@
 
 	include("templates/template.class.php");
 	
-	/**
-	 * Creates a new template for the user's profile.
-	 * Fills it with mockup data just for testing.
-	 */
+
 	$menu = new Template("templates/template-menu.tpl");
+	$layout = new Template("templates/view.tpl");
+	$analytics=new Template("templates/template-analytics.tpl");
+    
+   $layout->set("pageTitle", "Incidents View");
+   $layout->set("cssfilename","dashboard-disruption");
+   $layout->set("jsfilename","disruption");
+   $layout->set("menu", $menu->output());
+    $layout->set("header","Incidents on IITB");
+    
+    $layout->set("analytics",$analytics->output());
+    $layout->set("tableMessage","This table displays details of disruptions (unexpected events) on campus provided by users");
+
+    $layout->set("buttonredirect", "disruption-report.php");
+	$layout->set("button","Report new incident");
 	
-	/**
-	 * Loads our layout template, settings its title and content.
-	 */
-	$layout = new Template("templates/template-view.tpl");
-	$layout->set("templateTitle", "disruption");
-	$layout->set("datasetID","disruption");
-	$layout->set("tableMessage","This table displays details of disruptions (unexpected events) on campus provided by users");
-	$layout->set("templateTableTitle","Disruptions on Campus");
-	$layout->set("provideButton","details of a disruption");
-	$layout->set("menu", $menu->output());
-    $analytics=new Template("templates/template-analytics.tpl");
-    $layout->set("analytics",$analytics->output());
-	  $analytics=new Template("templates/template-analytics.tpl");
-    $layout->set("analytics",$analytics->output());
 	echo $layout->output();
 	
 ?>

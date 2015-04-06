@@ -13,7 +13,7 @@
 	$layout->set("templateMessage","Please use the form below to provide us with your thoughts, opinions, or other feedback regarding the dashboard.");
 	
     $layout->set("button","Submit feedback");
-	
+	$layout->set("cssfilename","dashboard-feedback");
 	$layout->set("menu", $menu->output());
     $layout->set("analytics",$analytics->output());
 	

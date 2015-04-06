@@ -22,12 +22,15 @@ function  injectGraph(templateSrc, graphSrc, resourceURI){
 	var bundle = itemStore.registerBundle({source: templateSrc});
 	TEMPLATE_ROOT=bundle.getRoot();
 	console.log("Creating editor");
+        
+        
 	EDITOR=new Editor({
             graph: GRAPH,
             resource: resourceURI,
             template: TEMPLATE_ROOT,
             compact: false
         }, RDFORM_LOCATION);  
+        rdfFormStyle();
      });
 };
 
@@ -48,7 +51,7 @@ function constructReport(){
 
 }
 
-var LABELS="d";
+var LABELS="";
 function isComplete(){
 constructReport();
 LABELS="";
@@ -62,7 +65,7 @@ if (CARDINALITY_REPORT.errors.length>0) {
 	
 	
 	$('.rformsLabel').each(function(i) {
-	if (label.match(this.innerText)) {
+	if (label.indexOf(this.innerText)>-1) {
 		this.style.color="red";
 		console.log("changed color for"+label);
 	}
@@ -81,4 +84,16 @@ $('.rformsLabel').each(function(i){
 	this.style.color="black";	
 	});
 
+}
+function rdfFormStyle(){
+    $( ".rformsTopLevel.rformsRow" ).addClass( "row" );
+	$( ".rformsLabelRow" ).addClass( "row col-sm-12 " );
+	$( ".rformsFields" ).addClass( "row col-sm-12 " );
+	//$( ".rformsRow" ).addClass( "row" );
+	$(".rformsFieldControl").addClass("col sm-1");
+//	$(".rformsFieldControl").addClass("col sm-10");
+	
+	
+	$(".rformsEditor.compact").removeClass('compact');
+	$("#onlyrdform").css('height','auto');
 }

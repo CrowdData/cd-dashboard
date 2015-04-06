@@ -8,7 +8,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard-general.css" rel="stylesheet">
-    <link href="css/dashboard-[@templateID].css" rel="stylesheet">
+    <link href="css/[@cssfilename].css" rel="stylesheet">
 
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -17,15 +17,17 @@
     <script src="release/dojo/dojo.js"></script>
  
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="js/custom.js"></script>
 	<script src="js/general-query.js"></script>
-	<script src="js/[@templateID]-template.js"></script>
+	<script src="js/responses.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/rdform/rdforms.js"></script>
+     <script src="js/viewer.js"></script>
+    <script src="js/loader.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
-	  <script src="js/rdftemplate.js"></script>
 	  <script type="text/javascript">
         // When the page is ready, load the data
         $( document ).ready(function() {
-            getTemplate("[@templateID]","[@templateID]ID","[@datasetID]","[@questionID]"); // found in [template].js file
+            initResponses("[@templateID]","[@datasetID]","[@questionID]"); 
         });  
 		</script>
     </script>
@@ -40,15 +42,12 @@
 	
 	</head>
 	
-	<body class="claro">
+	<body class="loading">
 	[@menu]
+
 	
-	
-	
-	
-	
-	 <div class="container-fluid data-display-header" >
-          <div class="container">        
+	 <div class="container-fluid data-display-header shadow" >
+          <div class="container shadow">        
               <h1 class="data-display capitalize">Responses to Question: [@question]</h1>
 				   <h5 class="data-display">Author: [@author]</h1>
           </div>
@@ -61,11 +60,12 @@
     
 	
 		    <h2>Response form</h2>
-		<div id="onlyrdform" class="container"></div>
-		
-		<div id="errorDiv" class="alert alert-danger hidden"></div> 
-		
-		
+		<div id="onlyrdform" class="claro container"></div>
+		  <div class="row">  
+        <div id="errorDiv" class="alert alert-danger"></div>
+         <div id="successDiv" class="alert alert-success"></div>
+        </div>   
+		 <button class="btn btn-info shadow" id='submitButton' onclick='submitResponse()'><span class="glyphicon glyphicon-send"></span> [@button]</button>
 		
 	    </div>
 	

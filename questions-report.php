@@ -11,6 +11,7 @@
     $layout->set("headerContent","Ask a question to IITB community.");
     $layout->set("pageTitle", "Ask a question");
 	$layout->set("templateMessage","Please use the form below to ask a question");
+    $layout->set("cssfilename","dashboard-questions");
 	
     $layout->set("button","Submit question");
 	

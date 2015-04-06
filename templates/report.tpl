@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -9,7 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard-general.css" rel="stylesheet">
-    <link href="css/dashboard-[@datasetID].css" rel="stylesheet">
+    <link href="css/[@cssfilename].css" rel="stylesheet">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link type="text/css" href="release/dijit/themes/claro/claro.css" rel="stylesheet" />
     <link type="text/css" href="release/rdforms/view/resources/rdforms.css" rel="stylesheet" />
@@ -31,10 +32,14 @@
         </div>
     </div>
     <div class="main container">
-        <div>[@templateMessage]</div>
+        <div class="text-info"><p><span class="glyphicon glyphicon-info-sign"></span> [@templateMessage]</p></div>
         <div id='onlyrdform' class="claro shadow"></div>
-        <button class="btn btn-info shadow" id='submitButton' onclick='submit();'>[@button]</button>
+        <div class="row">  
         <div id="errorDiv" class="alert alert-danger"></div>
+         <div id="successDiv" class="alert alert-success"></div>
+        </div>
+        <button class="btn btn-info shadow" id='submitButton' onclick='submit();'><span class="glyphicon glyphicon-send"></span> [@button]</button>
+     
         <div id="graph"></div>
     </div>
 
@@ -52,7 +57,7 @@
     <script type="text/javascript">
         // When the page is ready, load the data
         $(document).ready(function () {
-            init("[@templateID]", "[@datasetID]");
+            initTemplate("[@templateID]", "[@datasetID]");
         });
     </script>
 </body>

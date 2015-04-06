@@ -78,11 +78,6 @@ body.loading .modal {
     
 }
 
-
-
-
-
-
 #onlyrdform {
     opacity:0;
 }
@@ -93,6 +88,7 @@ body.loading .modal {
 box-shadow: 11px 11px 24px -8px rgba(0,0,0,0.75);
 }
 
-#errorDiv {
+#errorDiv, #successDiv {
     display:none;
 }
+

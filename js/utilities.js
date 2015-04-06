@@ -1,13 +1,23 @@
 
 var errorDiv='#errorDiv';
+var successDiv='#successDiv';
 var rdformDiv='#onlyrdform';
 var submitButton='#submitButton';
 function showError(message){
-$(errorDiv).html(message).fadeIn('slow');
+    hideSuccess();
+$(errorDiv).html("<span class='glyphicon glyphicon-remove-sign'></span> "+ message).fadeIn('slow');
 }
 function hideError(){
     $(errorDiv).fadeOut('slow');
 }
+function showSuccess(message){
+    hideError();
+    $(successDiv).html("<span class='glyphicon glyphicon-ok-sign'></span> "+ message).fadeIn('slow');
+    
+};
+function hideSuccess(){
+   $(successDiv).fadeOut('slow');
+};
 
 function showLoading(message){
     $('body').addClass('loading');
@@ -104,6 +114,29 @@ if(readCookie('userid')==null){
 else{
     alert("cookie="+readCookie('userid'));
 }
+
+       
+//http://www.experts-exchange.com/Programming/Languages/Scripting/JavaScript/Q_21889287.html           
+
+function parseXSDDateString(dateString) {
+  var Zp=(dateString.charAt(10)=="T")?19:10;
+  var xDate = new Date(dateString.substr(0,Zp).replace(/-/g,'/').replace("T"," "));
+  if(dateString.length>Zp){
+    xDate.setMinutes(xDate.getMinutes()+xDate.getTimezoneOffset());
+    if(dateString.charAt(Zp)!="Z"){
+      var tZ = dateString.substr(Zp).split(":");
+      tZ=tZ[0]*60+(tZ[1]*1);
+      xDate.setMinutes(xDate.getMinutes()+tZ);
+    }
+  }
+  return xDate;
+}
+  function isUrl(s) {
+var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+return regexp.test(s);
+}
+
+
 
 
 

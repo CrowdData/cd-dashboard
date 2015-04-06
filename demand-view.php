@@ -2,27 +2,24 @@
 
 	include("templates/template.class.php");
 	
-	/**
-	 * Creates a new template for the user's profile.
-	 * Fills it with mockup data just for testing.
-	 */
+
 	$menu = new Template("templates/template-menu.tpl");
-	
-	/**
-	 * Loads our layout template, settings its title and content.
-	 */
-	$layout = new Template("templates/template-view.tpl");
-	$layout->set("templateTitle", "demand");
-	$layout->set("tableMessage","This table displays the latest information about the demand for TumTums provided by users");
-	$layout->set("templateTableTitle","TumTum Demand");
-	$layout->set("datasetID","demand");
-	$layout->set("provideButton","current TumTum demand");
-	$layout->set("menu", $menu->output());
-	  $analytics=new Template("templates/template-analytics.tpl");
+	$layout = new Template("templates/view.tpl");
+	$analytics=new Template("templates/template-analytics.tpl");
+
+    
+   $layout->set("pageTitle", "Demand View");
+   $layout->set("cssfilename","dashboard-demand");
+   $layout->set("jsfilename","demand");
+   $layout->set("menu", $menu->output());
+    $layout->set("header","TumTum Demand");
+
     $layout->set("analytics",$analytics->output());
-	/**
-	 * Outputs the page with the user's profile.
-	 */
+    $layout->set("tableMessage","This table displays latest demand on the bus stops.");
+
+    $layout->set("buttonredirect", "demand-report.php");
+	$layout->set("button","Report currect bus stop demand");
+	
 	echo $layout->output();
 	
 ?>

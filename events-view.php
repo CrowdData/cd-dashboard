@@ -2,23 +2,24 @@
 
 	include("templates/template.class.php");
 	
-	/**
-	 * Creates a new template for the user's profile.
-	 * Fills it with mockup data just for testing.
-	 */
+
 	$menu = new Template("templates/template-menu.tpl");
 	
-	/**
-	 * Loads our layout template, settings its title and content.
-	 */
-	$layout = new Template("templates/template-view.tpl");
-	$layout->set("templateTitle", "events");
+    
+	$layout = new Template("templates/view.tpl");
+	
 	$layout->set("tableMessage","This table provides details about various institute level and department level events");
-	$layout->set("templateTableTitle","Campus Events");
 	$layout->set("datasetID","events");
-	$layout->set("provideButton","details of event");
 	$layout->set("menu", $menu->output());
+  
 	  $analytics=new Template("templates/template-analytics.tpl");
     $layout->set("analytics",$analytics->output());
+
+    //new
+  $layout->set("cssfilename","dashboard-events");
+  $layout->set("jsfilename","events");    
+    $layout->set("header","IITB Events");
+  $layout->set("button","Provide new event");
+$layout->set("buttonredirect","events-report.php");
 	echo $layout->output();
 ?>
