@@ -1,4 +1,5 @@
 function init() {
+    //quering old dataset need query for new based on what we need to display?
  var eventQuery ="SELECT ?Event_Name  ?Date_Start  ?Date_End ?Department ?about ?Website \
                                                     WHERE\
                                                     { \
@@ -11,6 +12,7 @@ function init() {
 														OPTIONAL{?resource <http://xmlns.com/foaf/0.1/homepage> ?Website.}\
                                                     }\
                                                     } ORDER BY ASC(?Date_Start)";
+//you can change handleTable for any other for display purposes    
 query(eventQuery,handleTable);
 			
 }

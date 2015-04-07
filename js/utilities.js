@@ -108,11 +108,11 @@ function eraseCookie(name) {
 }
 //create cookie on load
 if(readCookie('userid')==null){
-    alert("userid is null");
+   // alert("userid is null");
    createCookie('userid',generateUid(),365);
 }
 else{
-    alert("cookie="+readCookie('userid'));
+  //  alert("cookie="+readCookie('userid'));
 }
 
        
