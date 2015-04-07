@@ -6,7 +6,7 @@
 	$layout = new Template("templates/report.tpl");
     $analytics=new Template("templates/template-analytics.tpl");
 
-    $layout->set("datasetID","questions");
+    $layout->set("datasetID","questionsv2");
     $layout->set("templateID","http://crowddata.abdn.ac.uk/ontologies/cd/0.1/Question");
     $layout->set("headerContent","Ask a question to IITB community.");
     $layout->set("pageTitle", "Ask a question");

@@ -6,7 +6,7 @@
 	$layout = new Template("templates/report.tpl");
     $analytics=new Template("templates/template-analytics.tpl");
 
-    $layout->set("datasetID","feedback");
+    $layout->set("datasetID","feedbackv2");
     $layout->set("templateID","http://crowddata.abdn.ac.uk/ontologies/cd/0.1/Feedback");
     $layout->set("headerContent","Provide Feedback about dashboard");
     $layout->set("pageTitle", "Provide Feedback");

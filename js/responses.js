@@ -5,7 +5,7 @@ function getResponses(questionID) {
 var replyQuery ="SELECT *\
                       WHERE\
                       { \
-                      GRAPH <http://crowddata.abdn.ac.uk/datasets/questions/data/> {\
+                      GRAPH <http://crowddata.abdn.ac.uk/datasets/responsesv2/data/> {\
                       <"+questionID+"> sioc:has_reply ?resource .\
 							?resource	sioc:content ?reply ;\
 										sioc:has_creator ?creator ;\

@@ -17,6 +17,7 @@
 
     //new
   $layout->set("cssfilename","dashboard-events");
+$layout->set("pagetitle","Events");
   $layout->set("jsfilename","events");    
     $layout->set("header","IITB Events");
   $layout->set("button","Provide new event");

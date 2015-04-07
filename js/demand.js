@@ -1,5 +1,4 @@
 function init() {
-$('body').addClass('loading');
  var demandQuery ="SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \

@@ -6,7 +6,7 @@
 	$layout = new Template("templates/report.tpl");
     $analytics=new Template("templates/template-analytics.tpl");
 
-    $layout->set("datasetID","disruption");
+    $layout->set("datasetID","incidentv2");
     $layout->set("templateID","http://crowddata.abdn.ac.uk/def/incidents/Report");
     $layout->set("headerContent","Provide details of an incident.");
     $layout->set("pageTitle", "Incident report");

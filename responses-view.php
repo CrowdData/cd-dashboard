@@ -8,7 +8,7 @@
 	$layout = new Template("templates/template-response-view.tpl");
 	$layout->set("question", htmlspecialchars($_GET["question"]));
 	$layout->set("templateID","http://crowddata.abdn.ac.uk/ontologies/cd/0.1/Response");
-	$layout->set ("datasetID","questions");
+	$layout->set ("datasetID","responsesv2");
 	$layout->set("author",htmlspecialchars($_GET["author"]));
 	$layout->set("questionID",htmlspecialchars($_GET["id"]));
 	$layout->set("cssfilename","dashboard-responses");

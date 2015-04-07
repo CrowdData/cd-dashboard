@@ -5,10 +5,10 @@ function getData() {
  var questionsQuery ="SELECT *\
                       WHERE\
                       { \
-                      GRAPH <http://crowddata.abdn.ac.uk/datasets/questions/data/> {\
+                      GRAPH <http://crowddata.abdn.ac.uk/datasets/questionsv2/data/> {\
                       ?resource sioc:has_creator ?creator ;\
 								sioc:content ?question ;\
-								dcterms:created ?created; .\
+								sioc:created_at ?created; .\
 								?creator sioc:name ?author; .\
 								 MINUS { ?resource sioc:reply_of ?uri . }\
                                 }\
