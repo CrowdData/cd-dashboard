@@ -31,7 +31,6 @@ query(replyQuery,loadReplies);
 	};
 var author;
 function loadReplies(data){
-$('body').removeClass('loading');
 			
         if (!data.results.bindings[0]) {
                  $('#responsesDiv').append("<p>Be the first to answer this question...</p>");
@@ -66,6 +65,8 @@ return questionDiv;
 }
 
 function submitResponse(){
+    showLoading();
+    if(isComplete()){
    var url=host+"datasets/"+DATASET_ID+"/create";  //loader.js host move to global  
    var jsonData=genericResponse(); //from loader.js
     jsonData['questionID']=QUESTION_ID;
@@ -73,12 +74,21 @@ function submitResponse(){
         function (data) {
         //create new graph (simulates reloading)
         showSuccess("Thank you response was succesfully saved.");
-         initResponses(TEMPLATE_ID,DATASET_ID,QUESTION_ID);        
+         initResponses(TEMPLATE_ID,DATASET_ID,QUESTION_ID);
+         document.location.href="#top";
         alert("Success"+JSON.stringify(data));
        
-        });
+        },error);
+    }
+    else{
+    hideLoading();
+    }
     
 }
+var error=function(Error){
+    hideLoading();
+    showError("We could not save your response. Internet connection?");
+};
     
 
         

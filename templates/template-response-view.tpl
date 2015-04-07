@@ -47,7 +47,7 @@
 
 	
 	 <div class="container-fluid data-display-header shadow" >
-          <div class="container shadow">        
+          <div class="container">        
               <h1 class="data-display capitalize">Responses to Question: [@question]</h1>
 				   <h5 class="data-display">Author: [@author]</h1>
           </div>
@@ -55,12 +55,14 @@
 	
 	    <div class="main container">
 		 <div  id="top"></div>
+            <div class="row">
 		<a class='btn btn-success center' id='newResponse' href="#onlyrdform">Answer this question</a>
 	<div id="responsesDiv" class="container"></div>
-    
-	
+    </div>
+	   <div class="row">
 		    <h2>Response form</h2>
 		<div id="onlyrdform" class="claro container"></div>
+            </div>
 		  <div class="row">  
         <div id="errorDiv" class="alert alert-danger"></div>
          <div id="successDiv" class="alert alert-success"></div>
