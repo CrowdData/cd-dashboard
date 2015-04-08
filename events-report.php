@@ -9,7 +9,7 @@
     $layout->set("datasetID","eventsv2");
     $layout->set("templateID","http://crowddata.abdn.ac.uk/def/events/IITBEvent");
     $layout->set("headerContent","Provide details of Event");
-    $layout->set("pageTitle", "Event provider");
+    $layout->set("pagetitle", "Event provider");
 	$layout->set("templateMessage","Please use the form below to provide details of an event .");
     $layout->set("button","Provide event");
     $layout->set("cssfilename","dashboard-event");

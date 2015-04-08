@@ -91,4 +91,13 @@ box-shadow: 11px 11px 24px -8px rgba(0,0,0,0.75);
 #errorDiv, #successDiv {
     display:none;
 }
+h1.data-display{
+    font-weight: bold;
+}
+a {
+    text-decoration: underline;
+}
+#navbar a {
+    text-decoration: none;
+}
 
