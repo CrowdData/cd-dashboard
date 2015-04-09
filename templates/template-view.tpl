@@ -44,7 +44,7 @@
       
       <div class="container-fluid data-display-footer">
           <div class="container">
-            <a class="btn btn-default" href="[@templateTitle]-report.php" role="button">Provide [@provideButton]</a>
+            <button class="btn btn-default" href="[@templateTitle]-report.php" role="button">Provide [@provideButton]</button>
           </div>
       </div>
       

@@ -148,6 +148,7 @@ function styleType(value){
      if(isUrl(value)){
          var aTag=$('<a>',{href:value});
          aTag.text(value);
+         return aTag.prop('outerHTML');
      }
     return value.replace(/-|_/g," ");
     }

@@ -25,7 +25,7 @@
 <body class="loading">
 
     [@menu]
-    <div class="container-fluid data-display-header shadow">
+    <div class="container-fluid data-display-header">
         <div class="container">
             <h1 class="data-display capitalize">[@headerContent]</h1>
 
@@ -33,7 +33,7 @@
     </div>
     <div class="main container">
         <div class="text-info"><p><span class="glyphicon glyphicon-info-sign"></span> [@templateMessage]</p></div>
-        <div id='onlyrdform' class="claro shadow"></div>
+        <div id='onlyrdform' class="claro"></div>
         <div class="row">  
         <div id="errorDiv" class="alert alert-danger"></div>
          <div id="successDiv" class="alert alert-success"></div>
@@ -44,7 +44,7 @@
     </div>
 
 
-    <div class="container-fluid data-display-footer shadow">
+    <div class="container-fluid data-display-footer">
 
     </div>
     <div class="modal"></div>

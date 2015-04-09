@@ -43,7 +43,7 @@
       
       <div class="container-fluid data-display-footer">
           <div class="container">
-            <a class="btn btn-default" href="[@buttonredirect]" role="button">[@button]</a>
+            <button class="btn btn-default" href="[@buttonredirect]" role="button">[@button]</button>
           </div>
       </div>
       
