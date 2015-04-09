@@ -25,12 +25,12 @@
          
 	       
 	    <li>          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Campus Disruptions
+      Incidents
       <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-     	 <li ><a href="disruption-view.php">Campus Disruptions View</a></li>
-	  <li ><a href="disruption-report.php">Report New Disruption</a></li>
+     	 <li ><a href="disruption-view.php">Campus Incidents View</a></li>
+	  <li ><a href="disruption-report.php">Report New Incident</a></li>
     </ul>
   </li>	   
   
@@ -42,7 +42,16 @@
      	 <li ><a href="events-view.php">Events View</a></li>
 	  <li ><a href="events-report.php">Report New Event</a></li>
     </ul>
-  </li>	   
+  </li>	 
+                  <li>   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      Community QA
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+     	 <li ><a href="questions-view.php">Show Questions</a></li>
+	  <li ><a href="questions-report.php">Ask Question</a></li>
+    </ul>
+  </li>	
 	       	      <li>   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       Feedback
       <b class="caret"></b>
@@ -51,16 +60,7 @@
      	 <li ><a href="feedback-view.php">Feedback View</a></li>
 	  <li ><a href="feedback-report.php">Submit Feedback</a></li>
     </ul>
-  </li>	   
-     <li>   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-      Community QA
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-     	 <li ><a href="questions-view.php">Show Questions</a></li>
-	  <li ><a href="questions-report.php">Ask Question</a></li>
-    </ul>
-  </li>	  
+  </li>	     
 		
 			<li ><a href="contact.php">Contact Us</a></li>
 			<li ><a href="about.php">About</a></li> 
