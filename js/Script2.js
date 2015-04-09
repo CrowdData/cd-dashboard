@@ -14,7 +14,9 @@
                                                                          PREFIX vocab: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/vocab/>\
                                                                          PREFIX sioc: <http://rdfs.org/sioc/ns#>\
                                                                          PREFIX dcterms: <http://purl.org/dc/terms/>\
-                                                                         PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\ ";
+                                                                         PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\ 
+                                                                         PREFIX cdi: <http://crowddata.abdn.ac.uk/def/incidents/>\
+                                                                         PREFIX cde: <http://crowddata.abdn.ac.uk/def/events/>\";
 
  function initialize() {
            getEvents();
@@ -28,7 +30,7 @@
            var demandQuery = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query= SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demand/data/> {\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
 													?resource <http://purl.org/dc/terms/date> ?Date .\
 											OPTIONAL { ?resource <http://xmlns.com/foaf/0.1/DemandPersonLocation> ?Demand }\
 											OPTIONAL { ?resource <http://purl.org/dc/terms/Location> ?Location }\
@@ -79,7 +81,7 @@
                            document.getElementById("tumtum-demand-number").innerHTML = result;
                        }
                    else {
-                       document.getElementById("tumtum-demand-number").innerHTML = "Last couple of week" + simCount;
+                       document.getElementById("tumtum-demand-number").innerHTML = "Last two weeks " + simCount;
                    }
                    //    document.getElementById("distinctDemand").innerHTML = countDemUni;
                },
@@ -106,27 +108,27 @@
 
                if (index == 4) {
                    if (demands[index] > 1)
-                       return "Last week" + demands[index] + " groups of 21 or more";
+                       return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 21 or more";
                    else
-                       return "Last week" + demands[index] + " group of 21 or more";
+                       return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 21 or more";
                }
                else if (index == 3) {
                    if (demands[index] > 1)
-                        return "Last week" + demands[index] + "groups of 11 to 20";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 11 to 20";
                     else
-                        return "Last week" + demands[index] + "group of 11 to 20";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 11 to 20";
                }
                else if (index == 2){
                    if (demands[index] > 1)
-                        return "Last week" + demands[index] + "groups of 6 to 10";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 6 to 10";
                     else
-                        return "Last week" + demands[index] + "group of 6 to 10";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 6 to 10";
                }
                else if (index == 1){
                    if (demands[index] > 1)
-                        return "Last week" + demands[index] + "groups of 1 to 5";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 1 to 5";
                     else
-                        return "Last week" + demands[index] + "group of 1 to 5";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 1 to 5";
                }
                else
                    return generalCount;
@@ -177,9 +179,9 @@
 
        }
        function getEvents() {
-           var eventQuery = "select count(?event) where {\
-                                    GRAPH <http://crowddata.abdn.ac.uk/datasets/events/data/> {\
-                                    ?event <http://purl.org/dc/terms/dateStart> ?start.\
+           var eventQuery = "select count(?instance) where {\
+                                    GRAPH <http://crowddata.abdn.ac.uk/datasets/eventsv2/data/> {\
+                                    ?instance a cde:IITBEvent.\
                                 }\
                                 }\
                             ";
@@ -224,13 +226,13 @@
        }
 
        function getDisrupt() {
-           var disruptQuery = "SELECT  count(?disrupt)\
+           var disruptQuery = "SELECT  count(?instance)\
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/disruption/data/> {\
-                                                     ?disrupt <http://purl.org/dc/terms/date> ?Occurence_At ;\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/incidents/data/> {\
+                                                     ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cdi:Incident . ;\
 														                                                    }\
-                                                    } ORDER BY DESC(?Occurence_At)";
+                                                    } ";
            var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(disruptQuery);
            console.log(disruptUrl);
            $.ajax({
@@ -245,6 +247,38 @@
 
                    }
                    document.getElementById("disruptions-number").innerHTML = countQues;
+               },
+
+
+               error: function (xhr, textStatus, errorThrown) {
+                   alert("Error:" + textStatus); alert("Error" + errorThrown);
+               }
+
+           });
+       }
+       
+       function getFeedback() {
+           var feedbackQuery = "SELECT  count(?feedback)\
+                                                    WHERE\
+                                                    { \
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/feedback/data/> {\
+                                                     ?resource <http://purl.org/dc/terms/abstract> ?Feedback . ;\
+														                                                    }\
+                                                    } ";
+           var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(disruptQuery);
+           console.log(disruptUrl);
+           $.ajax({
+               dataType: "jsonp",
+               url: disruptUrl,
+               success: function (data) {
+                   var countQues = 0;
+                   var bindings = data.results.bindings;
+                   for (var i in bindings) {
+                       var feedbackData = data.results.bindings[i];
+                       countFeedback = feedbackData[".1"]["value"];
+
+                   }
+                   document.getElementById("feedback-number").innerHTML = countFeedback;
                },
 
 

@@ -74,12 +74,12 @@
 
       <div class="col-sm-5">
         <div class="tile tumtum-tile">
-          <div class="tile-number" style ="font-size: 50px"id="tumtum-demand-number">
+          <div  id="tumtum-demand-number">
            
           </div>
 
           <div class="">
-            People seen <a href="demand-view.php">waiting for TumTums</a>. 
+            people seen <a href="demand-view.php">waiting for TumTums</a>. 
           </div>
         </div>
       </div>
@@ -128,11 +128,24 @@
           </div>
 
           <div>
-            <a href="events-view.php">Events today</a> at IIT-B
+            <a href="events-view.php">events happening</a> at IIT-B
           </div>
         </div>
       </div>
-    </div>
+    </div><!--end row-->
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="tile feedback-tile">
+          <div class="tile-number centred-text" id="feedback-number">
+          
+          <div>
+            <a href="feedback-view.php">feedback messages provided</a> about IITB Life
+          </div>
+
+            
+          </div>
+        </div>
+      </div>
          </div>
     <script>
          $( document ).ready(function() {
@@ -141,6 +154,7 @@
            tumtumTrack();
            getData();
            getDisrupt();
+           getFeedback();
         });  
     </script>
 </body>
