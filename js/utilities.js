@@ -135,6 +135,22 @@ function parseXSDDateString(dateString) {
 var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 return regexp.test(s);
 }
+function styleType(value){
+    var date=parseXSDDateString(value);
+    if ( date.toString().indexOf("Invalid Date")==-1) {
+        return date.toLocaleString();
+    }
+
+     if(/^\d\d\d\d-\d\d-[\d]+/.test(value)){
+    console.log("DATE ONLY=="+value);
+                return (new Date(value).toLocaleDateString());
+     }
+     if(isUrl(value)){
+         var aTag=$('<a>',{href:value});
+         aTag.text(value);
+     }
+    return value.replace(/-|_/g," ");
+    }
 
 
 
