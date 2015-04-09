@@ -10,9 +10,10 @@
 	
     
 	
-	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/Script2.js"></script>
     <script type="text/javascript" src="js/utilities.js"></script>
      <meta charset="utf-8">
