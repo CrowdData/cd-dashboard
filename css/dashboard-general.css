@@ -100,4 +100,7 @@ a {
 #navbar a {
     text-decoration: none;
 }
+a.btn.btn-default{
+    text-decoration: none;
+}
 

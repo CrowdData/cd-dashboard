@@ -43,7 +43,7 @@
 	
       <div class="container-fluid data-display-footer">
     <div class="container">
-            <button class="btn btn-default" href="questions-report.php" role="button">Ask a question</button>
+            <a class="btn btn-default" href="questions-report.php" role="button">Ask a question</a>
           </div>
       </div>
       <div class='modal'></div>
