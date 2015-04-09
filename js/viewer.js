@@ -49,10 +49,7 @@ function handleTable(data){
                 return tr;
             }
       
-  function isUrl(s) {
-var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-return regexp.test(s);
-}
+
             function getTableCells(fieldName, rowData) {
 			console.log("getTableCell"+fieldName);
                 var td = $("<td></td>");
@@ -98,6 +95,53 @@ return regexp.test(s);
                 return td;
             }
 			
-			
+//handling construct			
+function handleConstructView(dataResponse,props,headers){
+    hideLoading();
+        $('#tablediv').removeClass('hidden');
+    	$('#data-table').addClass('table table-striped');
+var headerRow = $("<tr></tr>");
+$.each(headers, function(index, header){
+       headerRow.append("<th>"+header+"</th>");
+});
+
+$("#data-table").append(headerRow);
+
+var data = JSON.parse(JSON.stringify(dataResponse).replace("@graph", "graph"));
+
+if (data.graph){
+    $.each(data.graph, function(index, item){
+         $("#data-table").append(createRow(props, item));
+    });
+} else {
+    $("#data-table").append(createRow(props, data));
+}
+
+}
+//extend
+function createRow(props, item){
+    var row = $("<tr></tr>");
+    $.each(props, function(index, property){
+        var cell = $("<td></td>");
+     //   var value = eval('item.'+property);
+        var value=item[property];
+        if(value){
+        if (value.constructor === Array){
+            $.each(value, function(i, p){
+                
+                  cell.append("   " + styleType(value[i])+"<br/>");
+            });
+        } else {
+            
+            cell.append(styleType(item[property]) );
+        }
+        }
+        else{
+            cell.append("N/A");
+        }
+        row.append(cell)
+    });
+    return row;
+} 
 
 				
