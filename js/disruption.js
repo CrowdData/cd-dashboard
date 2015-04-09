@@ -26,7 +26,7 @@ WHERE\
         ?location foaf:name ?locationName.\
         ?time tl:beginsAtDateTime ?startTime .\
         ?time tl:endsAtDateTime ?endTime .\
-        ?location cdi:nearStopName ?nearStop .\
+       OPTIONAL{ ?location cdi:nearStopName ?nearStop .}\
       }\
 GRAPH <http://crowddata.abdn.ac.uk/datasets/incidents/schema/>{\
     ?typeUri rdfs:label ?type .}\
