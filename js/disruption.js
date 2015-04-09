@@ -10,6 +10,7 @@ CONSTRUCT {\
 ?instance dcterms:description ?description .\
 ?instance rdfs:label ?type .\
 ?instance cdi:nearStopName ?nearStop .\
+?instance cdi:hasStatus ?statusLabel .\
 ?instance event:time ?time .\
 ?instance tl:beginsAtDateTime ?startTime .\
 ?instance tl:endsAtDateTime ?endTime .\
@@ -22,6 +23,7 @@ WHERE\
         ?instance dcterms:description ?description .\
         ?instance cdi:incidentType ?typeUri .\
         ?instance event:time ?time .\
+        ?instance cdi:hasStatus ?status.\
         ?instance event:place ?location .\
         ?location foaf:name ?locationName.\
         ?time tl:beginsAtDateTime ?startTime .\
@@ -29,7 +31,8 @@ WHERE\
        OPTIONAL{ ?location cdi:nearStopName ?nearStop .}\
       }\
 GRAPH <http://crowddata.abdn.ac.uk/datasets/incidents/schema/>{\
-    ?typeUri rdfs:label ?type .}\
+    ?typeUri rdfs:label ?type .\
+    ?status rdfs:label ?statusLabel .}\
   }";
 
 queryConstruct(disruptionQuery,handleIncidentView);
@@ -39,8 +42,8 @@ queryConstruct(disruptionQuery,handleIncidentView);
 
 
 //var props = ["id","hasTag" ];
-var props = ["rdfs:label", "title", "description", "beginsAtDateTime", "endsAtDateTime","name", "nearStopName"];
-var headers=["Type of incident", "Title","Description", "Start Time", "End Time","Location description", "Affected Stops"];
+var props = ["rdfs:label","cdi:hasStatus", "title", "description", "beginsAtDateTime", "endsAtDateTime","name", "nearStopName"];
+var headers=["Type of incident","Status", "Title","Description", "Start Time", "End Time","Location description", "Affected Stops"];
 
 
 function handleIncidentView(dataResponse){

@@ -59,7 +59,7 @@
      var map = L.map('map', {
          center: [19.132E0, 72.9151E0],
          zoom: 16,
-         layers: [streets, BusLocations]
+         layers: [streets, BusLocations, BusStops]
      });
 
      var baseLayers = {

@@ -2,10 +2,10 @@ function init() {
  var demandQuery ="SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demand/data/> {\
-													?resource <http://purl.org/dc/terms/date> ?Date .\
-											OPTIONAL { ?resource <http://xmlns.com/foaf/0.1/DemandPersonLocation> ?Demand }\
-											OPTIONAL { ?resource <http://purl.org/dc/terms/Location> ?Location }\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
+													?resource dcterms:date ?Date .\
+											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand }\
+											OPTIONAL { ?resource dcterms:Location ?Location }\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 query(demandQuery,handleTable);
