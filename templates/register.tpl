@@ -30,12 +30,11 @@
 <div class="container">
 
 
-    <p>Before using IITB Life, we require to check that you are a person with a valid email address.  Please enter your name and email address using the form below.  We’ll then send you an email with a link for you to confirm your registration.</p>
-
-    <p>Already registered and wondering why you’re seeing this page? We use cookies to keep track of your registration; so if you are seeing this page, we cannot find our cookie on your device. This could be because you have recently deleted the cookies from your web browser. Apologies about that; please complete the form below again, and we’ll soon have you back using IIT Life.</p>
+    <p>Before using IITB Life, we require to check that you are a person with a valid email address.  Please enter your name and email address using the form below.  We’ll then send you an email with an activation code which you will need to input to activation form below in order to confirm your registration.</p>
 
     <hr/>
-  <form>
+  <form id="register">
+       <h3>Registration form</h3>
     <div class="form-group">
         <label class="control-label" for="name">Name:</label>
         <div class="input-group">
@@ -45,7 +44,7 @@
     </div>
         
     <div class="form-group">
-        <label class="control-label" for="email">Email to send registration link to:</label>
+        <label class="control-label" for="email">Email</label>
         <div class="input-group">
             <span class="input-group-addon">Email</span>
             <input class="form-control" placeholder="john.smith@example.com" name="email" id="email" type="text"/>
@@ -55,8 +54,34 @@
     </form>
      <div id="successDiv" class="alert alert-success"></div>
      <div id="errorDiv" class="alert alert-error"></div>
+    
+    <hr/>
+        <p>Already registered and wondering why you’re seeing this page? We use cookies to keep track of your registration; so if you are seeing this page, we cannot find our cookie on your device. This could be because you have recently deleted the cookies from your web browser. Apologies about that; please input your activation code to the form below and we’ll soon have you back using IITB Life. If you lost your Activation Code simple fillout the Registration Form to send you new one.</p>
+    <hr/>
+      <form id="activation">
+           <h3>Activation Form</h3>
+    <div class="form-group">
+        <label class="control-label" for="name">Activation Code</label>
+        <div class="input-group">
+            <span class="input-group-addon">Activation Code</span>
+            <input class="form-control input-lg" placeholder="PASTE YOUR ACTIVATION CODE HERE" name="code" id="code" type="text" />
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="input-group">
+            <span class="input-group-addon">Email</span>
+            <input class="form-control" placeholder="john.smith@example.com" name="email2" id="email2" type="text"/>
+        </div>
+    </div>
+       <button id="submit" type="submit" class="btn btn-primary">Activate</button>
+    </form>
+     <div id="successDivA" style="display:none;" class="alert alert-success"></div>
+     <div id="errorDivA" style="display:none" class="alert alert-warning"></div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
@@ -67,7 +92,7 @@
             // When the document is ready
             $(document).ready(function () {
                 //validation rules
-                $("form").validate({
+                $("#register").validate({
                     rules: {
                         email: {
                             required: true,
@@ -96,7 +121,7 @@
                                          $.ajax({  
         type:"POST",        
         url: "http://crowddata.abdn.ac.uk/test/1/user/create?callback=?",  
-        data: $('form').serialize(), 
+        data: $('#register').serialize(), 
         success: function(result)
         { 
             $('#email').attr('disabled','');
@@ -112,6 +137,55 @@
     }); 
                     }
                 });
+                
+                
+      $("#activation").validate({
+                    rules: {
+                        code: {
+                            required: true,
+                        },  
+                        email2: {
+                            required: true,
+                            email:true
+                        } 
+                    }, highlight: function(element) {
+        $(element).closest('.form-group').addClass('has-error');
+    },
+    unhighlight: function(element) {
+        $(element).closest('.form-group').removeClass('has-error');
+    },
+    errorElement: 'span',
+    errorClass: 'help-block',
+    errorPlacement: function(error, element) {
+        if(element.parent('.input-group').length) {
+            error.insertAfter(element.parent());
+        } else {
+            error.insertAfter(element);
+        }
+    },
+                    submitHandler: function() {
+                                         $.ajax({  
+        type:"POST",        
+        url: "http://crowddata.abdn.ac.uk/test/1/user/validate?callback=?",  
+        data: $('#activation').serialize(), 
+        success: function(result)
+        { 
+           //storecookie
+          //  createCookie('userid',result.id);
+            $('#errorDivA').hide();
+            createCookie('userid',result.additional);
+           $('#successDivA').show().html(result.message);
+          
+         },
+         error: function(error){
+            $('#errorDivA').show().html(JSON.parse(error.responseText).message);
+         }
+
+    }); 
+                    }
+                });
+                
+                
             });
             
         </script>
