@@ -137,15 +137,15 @@
       <div class="col-sm-3">
         <div class="tile feedback-tile">
           <div class="tile-number centred-text" id="feedback-number">
-          
-          <div>
-            <a href="feedback-view.php">feedback messages provided</a> about IITB Life
           </div>
 
-            
+          <div>
+            <a href="feedback-view.php">Feedback messages provided</a> at IIT-B
           </div>
         </div>
       </div>
+         </div>
+      
          </div>
     <script>
          $( document ).ready(function() {
