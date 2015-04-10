@@ -14,7 +14,7 @@
     $layout->set("header","Incidents on IITB");
     
     $layout->set("analytics",$analytics->output());
-    $layout->set("tableMessage","This table displays details of disruptions (unexpected events) on campus provided by users");
+    $layout->set("tableMessage","The table below shows incidents, i.e. adverse things happening on campus, such as road closures, internet outages, and panther sightings.  These have been provided by other users; are you aware of something happening that’s not listed? If so, <a href=disruption-report.php>tell us and others about it</a>.");
 
     $layout->set("buttonredirect", "disruption-report.php");
 	$layout->set("button","Report new incident");
