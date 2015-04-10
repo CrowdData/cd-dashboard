@@ -1,23 +1,27 @@
  var prefixes = "PREFIX dc: <http://purl.org/dc/elements/1.1/>\
-                                                                         PREFIX db: <http://crowddata.abdn.ac.uk:8080/d2rq/resource>\
-                                                                         PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\
-                                                                         PREFIX meta: <http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/metadata#>\
-                                                                         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
-                                                                         PREFIX time: <http://www.w3.org/TR/owl-time/>\
-                                                                         PREFIX naptan: <http://transport.data.gov.uk/def/naptan/>\
-                                                                         PREFIX d2r: <http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#>\
-                                                                         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\
-                                                                         PREFIX foaf: <http://xmlns.com/foaf/spec/>\
-                                                                         PREFIX map: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/#>\
-                                                                         PREFIX owl: <http://www.w3.org/2002/07/owl#>\
-                                                                         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                                                                         PREFIX vocab: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/vocab/>\
-                                                                         PREFIX sioc: <http://rdfs.org/sioc/ns#>\
-                                                                         PREFIX dcterms: <http://purl.org/dc/terms/>\
-                                                                         PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\ 
-                                                                         PREFIX cdi: <http://crowddata.abdn.ac.uk/def/incidents/>\
-                                                                         PREFIX cde: <http://crowddata.abdn.ac.uk/def/events/>\";
+                                                        PREFIX db: <http://crowddata.abdn.ac.uk:8080/d2rq/resource>\
+                                                        PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\
+                                                        PREFIX meta: <http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/metadata#>\
+                                                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
+                                                        PREFIX time: <http://www.w3.org/TR/owl-time/>\
+                                                        PREFIX naptan: <http://transport.data.gov.uk/def/naptan/>\
+                                                        PREFIX d2r: <http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#>\
+                                                        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\
+                                                        PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+                                                        PREFIX map: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/#>\
+                                                        PREFIX owl: <http://www.w3.org/2002/07/owl#>\
+                                                        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                                                        PREFIX vocab: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/vocab/>\
+                                                        PREFIX event: <http://purl.org/NET/c4dm/event.owl#>\
+                                                        PREFIX cdi: <http://crowddata.abdn.ac.uk/def/incidents/>\
+														PREFIX sioc: <http://rdfs.org/sioc/ns#>\
+														PREFIX dcterms: <http://purl.org/dc/terms/>\
+                                                        PREFIX inc: <http://crowddata.abdn.ac.uk/def/incidents/>\
+                                                        PREFIX cde: <http://crowddata.abdn.ac.uk/def/events/>\
+                                                        PREFIX events: <http://crowddata.abdn.ac.uk/def/events/>\
+                                                        PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\  ";
 
+var construct = "CONSTRUCT {?instance a cdi:Incident .}";
  function initialize() {
            getEvents();
            getQA();
@@ -32,8 +36,8 @@
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
 													?resource <http://purl.org/dc/terms/date> ?Date .\
-											OPTIONAL { ?resource <http://xmlns.com/foaf/0.1/DemandPersonLocation> ?Demand }\
-											OPTIONAL { ?resource <http://purl.org/dc/terms/Location> ?Location }\
+											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand }\
+											OPTIONAL { ?resource  <http://purl.org/dc/terms/Location> ?Location }\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 
@@ -186,7 +190,7 @@
                                 }\
                             ";
 
-           var eventUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(eventQuery);
+           var eventUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes + eventQuery);
            $.ajax({
                dataType: "jsonp",
                url: eventUrl,
@@ -230,10 +234,10 @@
                                                     WHERE\
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/incidents/data/> {\
-                                                     ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cdi:Incident . ;\
+                                                     ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cdi:incident ;\
 														                                                    }\
                                                     } ";
-           var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(disruptQuery);
+           var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes + disruptQuery);
            console.log(disruptUrl);
            $.ajax({
                dataType: "jsonp",
@@ -258,18 +262,18 @@
        }
        
        function getFeedback() {
-           var feedbackQuery = "SELECT  count(?feedback)\
+           var feedbackQuery = "SELECT    count(?Feedback) \
                                                     WHERE\
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/feedback/data/> {\
-                                                     ?resource <http://purl.org/dc/terms/abstract> ?Feedback . ;\
-														                                                    }\
-                                                    } ";
-           var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(disruptQuery);
-           console.log(disruptUrl);
+                                                     ?resource <http://purl.org/dc/terms/abstract> ?Feedback .\
+                                                    }\
+                                                    }";
+           var feedbackUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(feedbackQuery);
+           console.log(feedbackUrl);
            $.ajax({
                dataType: "jsonp",
-               url: disruptUrl,
+               url: feedbackUrl,
                success: function (data) {
                    var countQues = 0;
                    var bindings = data.results.bindings;
