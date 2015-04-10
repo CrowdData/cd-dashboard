@@ -32,7 +32,7 @@
 		  </div>
 		  
 		      <div class="container">
-			<p>If you would like to contact us, please either use the <a href="feedback-report.php">Feedback page</a> or contact Lekshmy via <a href="mailto:lekshmyvv@iitb.ac.in">email</a>.</p>	
+			<p>If you would like to contact us, please either use the <a href="feedback-report.php">feedback page</a> or contact Lekshmy via <a href="mailto:lekshmyvv@iitb.ac.in">email</a>.</p>	
 		      </div>
  
       
