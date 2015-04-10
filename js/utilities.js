@@ -106,13 +106,9 @@ function readCookie(name) {
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
-//create cookie on load
-if(readCookie('userid')==null){
+if(readCookie('userid')==null && !(window.location.pathname.indexOf("register.php")>-1)){
    // alert("userid is null");
-   createCookie('userid',generateUid(),365);
-}
-else{
-  //  alert("cookie="+readCookie('userid'));
+   document.location.href="register.php";
 }
 
        

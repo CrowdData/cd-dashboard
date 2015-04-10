@@ -102,7 +102,7 @@
             $('#email').attr('disabled','');
             $('#name').attr('disabled','');
             $('#submit').attr('disabled','');
-           showSuccess("Thank you, please go to your email account and follow further instructions.");
+           showSuccess(result);
           
          },
          error: function(error){
