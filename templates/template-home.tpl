@@ -27,14 +27,9 @@
       <div class="container container-fluid data-display-header">
     
 <div class="row">		  
-              <h1 >IIT Bombay Life</h1>
-              <p>Providing a snapshot of life on the IITB campus</p>
-              <p>The IIT Bombay Life provides information about various aspects of the campus.
-              You can view, report or provide any information related to events,disruptions and demand by clicking on any of the links located below. You are also able to ask questions and provide answers to IITB community.</p>
+              <p>Below you’ll find an overview of what’s happening on campus; tap on any of the boxes to find out more or to let us know about what’s going on.</p>
           </div>
-
       </div>
-
      <div class="container  display-content ">     
           <div class="row   box tumtum-demand-box">
                 <h2>Test TumTum Demand</h2>
@@ -99,7 +94,6 @@
                 <p><a href="feedback-view.php">View</a></p>
                 <p><a href="feedback-report.php">Provide</a></p>
              </div>
-
            
           
       </div>
