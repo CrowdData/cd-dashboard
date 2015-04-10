@@ -8,9 +8,9 @@
 
     $layout->set("datasetID","feedbackv2");
     $layout->set("templateID","http://crowddata.abdn.ac.uk/ontologies/cd/0.1/Feedback");
-    $layout->set("headerContent","Provide Feedback about dashboard");
+    $layout->set("headerContent","Provide Feedback About IITB Life");
     $layout->set("pageTitle", "Provide Feedback");
-	$layout->set("templateMessage","Please use the form below to provide us with your thoughts, opinions, or other feedback regarding the dashboard.");
+	$layout->set("templateMessage","Your feedback is crucial to ensuring IITB Life provides a useful service; please use the form below to let us know what you think about it.");
 	
     $layout->set("button","Submit feedback");
 	$layout->set("cssfilename","dashboard-feedback");
