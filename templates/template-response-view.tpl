@@ -46,17 +46,17 @@
 	[@menu]
 
 	
-	 <div class="container-fluid data-display-header shadow" >
+	 <div class="container-fluid data-display-header" >
           <div class="container">        
               <h1 class="data-display capitalize">Responses to Question: [@question]</h1>
-				   <h5 class="data-display">Author: [@author]</h1>
+				   <h5 class="data-display">Author: [@author]</h5>
           </div>
       </div>
 	
 	    <div class="main container">
 		 <div  id="top"></div>
             <div class="row">
-		<a class='btn btn-success center' id='newResponse' href="#onlyrdform">Answer this question</a>
+		<p>Can you provide a useful response to this question? If so, please provide it using the form below.</p>
 	<div id="responsesDiv" class="container"></div>
     </div>
 	   <div class="row">
@@ -67,7 +67,7 @@
         <div id="errorDiv" class="alert alert-danger"></div>
          <div id="successDiv" class="alert alert-success"></div>
         </div>   
-		 <button class="btn btn-info shadow" id='submitButton' onclick='submitResponse()'><span class="glyphicon glyphicon-send"></span> [@button]</button>
+		 <button class="btn btn-info" id='submitButton' onclick='submitResponse()'><span class="glyphicon glyphicon-send"></span> [@button]</button>
 		
 	    </div>
 	
