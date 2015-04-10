@@ -12,7 +12,7 @@
     $layout->set("pageTitle","IITB Questions");
     $layout->set("cssfilename","dashboard-questions");
     $layout->set("jsfilename","questions");
-	$layout->set("templateTitle", "questions");
+	$layout->set("templateMessage", "questions");
 	$layout->set("menu", $menu->output());
 	
 	  $analytics=new Template("templates/template-analytics.tpl");
