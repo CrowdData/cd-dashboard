@@ -9,6 +9,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard-general.css" rel="stylesheet">
     <link href="css/dashboard-home.css" rel="stylesheet">
+      <link href="css/[@cssfilename].css" rel="stylesheet">
 
       
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -40,11 +41,12 @@
       <div class="container-fluid data-display-header">
           <div class="container">        
               <h1 >Campus Map</h1>
-         <p> Provides you with real-time TumTum bus locations, latest demand and disruptions </p>
-          </div>
+         </div>
       </div>
 
-     <div class="container display-content ">     
+     <div class="container display-content ">  
+         <div><p> Use the layers selection box at the top right of the map to display different things on the map. Currently these include real-time TumTum locations, provided by the <a href="http://transittripplanner.co.in/VisitorInformationSystem/tumtum.html">TumTum Tracker system</a> and TumTum stop locations.  Tap on the pins on the map for more details, such as recently reported TumTum demand and incidents at each stop. </p>
+          </div>   
    <div id='map' class='map' style="height: 725px;  width: inherit; padding: 2px; "> </div>
 <script>
  
@@ -59,7 +61,7 @@
      var map = L.map('map', {
          center: [19.132E0, 72.9151E0],
          zoom: 16,
-         layers: [streets, BusLocations]
+         layers: [streets, BusLocations, BusStops]
      });
 
      var baseLayers = {
