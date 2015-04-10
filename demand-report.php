@@ -1,4 +1,4 @@
-<?php
+\<?php
 
 	include("templates/template.class.php");
 	
@@ -12,7 +12,7 @@
     $layout->set("cssfilename", "dashboard-demand");
     $layout->set("headerContent","Provide details of TumTum demand");
     $layout->set("pageTitle", "Demand report");
-	$layout->set("templateMessage","Please use the form below to provide details of the demand for TumTums at a stop.");
+	$layout->set("templateMessage","Please use this form to let other users know about the number of people your seeing waiting for a TumTum.");
 	
     $layout->set("button","Report demand");
 	
