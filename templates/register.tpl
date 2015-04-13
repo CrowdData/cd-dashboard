@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register IITB Life</title>
+    <title>Register for IITB Life</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -50,13 +50,14 @@
             <input class="form-control" placeholder="john.smith@example.com" name="email" id="email" type="text"/>
         </div>
     </div>
-       <button id="submit" type="submit" class="btn btn-primary">Register</button>
-    </form>
-     <div id="successDiv" class="alert alert-success"></div>
+    <div id="successDiv" class="alert alert-success"></div>
      <div id="errorDiv" class="alert alert-error"></div>
+     <div >  <button id="submit" type="submit" class="btn btn-primary">Register</button><img id="loading-register" src="css/images/loading.gif"></div>
+    </form>
+
     
     <hr/>
-        <p>Already registered and wondering why you’re seeing this page? We use cookies to keep track of your registration; so if you are seeing this page, we cannot find our cookie on your device. This could be because you have recently deleted the cookies from your web browser. Apologies about that; please input your activation code to the form below and we’ll soon have you back using IITB Life. If you lost your Activation Code simple fillout the Registration Form to send you new one.</p>
+        <p>Already registered and wondering why you’re seeing this page? We use cookies to keep track of your registration; so if you are seeing this page, we cannot find our cookie on your device. This could be because you have recently deleted the cookies from your web browser. Apologies about that; please input your activation code to the form below and we’ll soon have you back using IITB Life. If you lost your Activation Code simply fill out the <a href='#register'>registration form</a> to send you new one.</p>
     <hr/>
       <form id="activation">
            <h3>Activation Form</h3>
@@ -64,7 +65,7 @@
         <label class="control-label" for="name">Activation Code</label>
         <div class="input-group">
             <span class="input-group-addon">Activation Code</span>
-            <input class="form-control input-lg" placeholder="PASTE YOUR ACTIVATION CODE HERE" name="code" id="code" type="text" />
+            <input class="form-control input-lg" placeholder="PASTE YOUR CODE HERE" name="code" id="code" type="text" />
         </div>
     </div>
         
@@ -72,13 +73,15 @@
         <label class="control-label" for="email">Email</label>
         <div class="input-group">
             <span class="input-group-addon">Email</span>
-            <input class="form-control" placeholder="john.smith@example.com" name="email2" id="email2" type="text"/>
+            <input class="form-control" placeholder="your@registration.email" name="email2" id="email2" type="text"/>
         </div>
     </div>
-       <button id="submit" type="submit" class="btn btn-primary">Activate</button>
-    </form>
      <div id="successDivA" style="display:none;" class="alert alert-success"></div>
      <div id="errorDivA" style="display:none" class="alert alert-warning"></div>
+          <div><button id="submit-a" type="submit" class="btn btn-primary">Activate</button> <img id="loading-activate" src="css/images/loading.gif"></div>
+
+    </form>
+    <div style="height:2em"></div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
@@ -118,12 +121,14 @@
         }
     },
                     submitHandler: function() {
+                        $('#loading-register').show();
                                          $.ajax({  
         type:"POST",        
         url: "http://crowddata.abdn.ac.uk/test/1/user/create?callback=?",  
         data: $('#register').serialize(), 
         success: function(result)
         { 
+                 $('#loading-register').hide();
             $('#email').attr('disabled','');
             $('#name').attr('disabled','');
             $('#submit').attr('disabled','');
@@ -131,6 +136,7 @@
           
          },
          error: function(error){
+     $('#loading-register').hide();
              showError(error);
          }
 
@@ -164,6 +170,7 @@
         }
     },
                     submitHandler: function() {
+                         $('#loading-activate').show();
                                          $.ajax({  
         type:"POST",        
         url: "http://crowddata.abdn.ac.uk/test/1/user/validate?callback=?",  
@@ -173,11 +180,13 @@
            //storecookie
           //  createCookie('userid',result.id);
             $('#errorDivA').hide();
+             $('#loading-activate').hide();
             createCookie('userid',result.additional);
            $('#successDivA').show().html(result.message);
           
          },
          error: function(error){
+         $('#loading-activate').hide();
             $('#errorDivA').show().html(JSON.parse(error.responseText).message);
          }
 
