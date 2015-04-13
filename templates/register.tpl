@@ -182,6 +182,7 @@
             $('#errorDivA').hide();
              $('#loading-activate').hide();
             createCookie('userid',result.additional);
+            $('#submit-a').attr('disabled','');
            $('#successDivA').show().html(result.message);
           
          },
