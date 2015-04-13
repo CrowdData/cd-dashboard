@@ -65,7 +65,7 @@
         <label class="control-label" for="name">Activation Code</label>
         <div class="input-group">
             <span class="input-group-addon">Activation Code</span>
-            <input class="form-control input-lg" placeholder="PASTE YOUR CODE HERE" name="code" id="code" type="text" />
+            <input class="form-control input-lg" placeholder="Your activation code" name="code" id="code" type="text" />
         </div>
     </div>
         
@@ -129,9 +129,9 @@
         success: function(result)
         { 
                  $('#loading-register').hide();
-            $('#email').attr('disabled','');
-            $('#name').attr('disabled','');
-            $('#submit').attr('disabled','');
+            //$('#email').attr('disabled','');
+            //$('#name').attr('disabled','');
+            //$('#submit').attr('disabled','');
            showSuccess(result);
           
          },
