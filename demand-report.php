@@ -1,4 +1,4 @@
-\<?php
+<?php
 
 	include("templates/template.class.php");
 	
