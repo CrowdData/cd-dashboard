@@ -2,16 +2,16 @@
 
 
 function getData() {
- var questionsQuery ="SELECT *\
+ var questionsQuery ="SELECT * \
+       FROM <http://crowddata.abdn.ac.uk/datasets/questionsv2/data/>\
+       FROM <http://crowddata.abdn.ac.uk/datasets/users/data/> \
                       WHERE\
                       { \
-                      GRAPH <http://crowddata.abdn.ac.uk/datasets/questionsv2/data/> {\
-                      ?resource sioc:has_creator ?creator ;\
+                      ?resource prov:wasAttributedTo ?creator ;\
 								sioc:content ?question ;\
 								sioc:created_at ?created; .\
-								?creator sioc:name ?author; .\
+								?creator foaf:name ?author; .\
 								 MINUS { ?resource sioc:reply_of ?uri . }\
-                                }\
                                 } ORDER BY DESC(?created)";
 var result=query(questionsQuery,loadQuestions);
 			

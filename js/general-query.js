@@ -16,6 +16,7 @@ var prefixes = "PREFIX dc: <http://purl.org/dc/elements/1.1/>\
 														PREFIX dcterms: <http://purl.org/dc/terms/>\
                                                         PREFIX inc: <http://crowddata.abdn.ac.uk/def/incidents/>\
                                                         PREFIX events: <http://crowddata.abdn.ac.uk/def/events/>\
+                                                        PREFIX prov: <http://www.w3.org/ns/prov#>\
                                                         PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\ ";
 
 														function query(query,functionExecute){

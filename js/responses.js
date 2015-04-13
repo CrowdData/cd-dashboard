@@ -2,17 +2,18 @@
 
 QUESTION_ID=null;
 function getResponses(questionID) {
-var replyQuery ="SELECT *\
+var replyQuery ="SELECT * \
+ FROM <http://crowddata.abdn.ac.uk/datasets/responsesv2/data/>\
+ FROM <http://crowddata.abdn.ac.uk/datasets/users/data/>\
                       WHERE\
                       { \
-                      GRAPH <http://crowddata.abdn.ac.uk/datasets/responsesv2/data/> {\
                       <"+questionID+"> sioc:has_reply ?resource .\
 							?resource	sioc:content ?reply ;\
-										sioc:has_creator ?creator ;\
+										prov:wasAttributedTo ?creator ;\
 										sioc:created_at ?created; .\
-								?creator sioc:name ?author .\
+								?creator foaf:name ?author .\
                                 }\
-                                } ORDER BY DESC(?created)";
+                                ORDER BY DESC(?created)";
 query(replyQuery,loadReplies);
 			
 }
