@@ -1,12 +1,14 @@
 function init() {
- var feedbackQuery ="SELECT    ?Feedback_Provider ?Feedback \
+ var feedbackQuery ="SELECT ?Feedback_Provider ?Feedback \
+FROM <http://crowddata.abdn.ac.uk/datasets/feedbackv2/data/>\
+FROM <http://crowddata.abdn.ac.uk/datasets/users/data/>\
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/feedback/data/> {\
                                                      ?resource <http://purl.org/dc/terms/abstract> ?Feedback ;\
-							<http://purl.org/dc/terms/creator> ?Feedback_Provider .\
+                                                    prov:wasAttributedTo ?user .\
+							                         ?user foaf:name ?Feedback_Provider .\
                                                     }\
-                                                    } ";
+                                                     ";
 query(feedbackQuery,handleTable);
 			
 }	
