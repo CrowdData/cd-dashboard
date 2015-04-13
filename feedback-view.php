@@ -17,7 +17,7 @@
     $layout->set("analytics",$analytics->output());
     $layout->set("tableMessage","This table displays the feedback on the dashboard provided by users");
 
-    $layout->set("buttonRedirect", "feedback-report.php");
+    $layout->set("buttonredirect", "feedback-report.php");
 	$layout->set("button","Provide us with feedback");
 	
 	echo $layout->output();
