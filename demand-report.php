@@ -12,7 +12,7 @@
     $layout->set("cssfilename", "dashboard-demand");
     $layout->set("headerContent","Provide details of TumTum demand");
     $layout->set("pageTitle", "Demand report");
-	$layout->set("templateMessage","Please use this form to let other users know about the number of people your seeing waiting for a TumTum.");
+	$layout->set("templateMessage","Please use this form to let others know about the number of people you've seen waiting for a TumTum.");
 	
     $layout->set("button","Report demand");
 	

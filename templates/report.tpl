@@ -23,16 +23,16 @@
 </head>
 
 <body class="loading">
-
     [@menu]
-    <div class="container-fluid data-display-header">
+    
+      <div class="container-fluid data-display-header">
         <div class="container">
-            <h1 class="data-display capitalize">[@headerContent]</h1>
-
-        </div>
-    </div>
-    <div class="main container">
-        <div class="text-info"><p><span class="glyphicon glyphicon-info-sign"></span> [@templateMessage]</p></div>
+              <h1 class="data-display capitalize">[@headerContent] </h1>
+          </div>
+      </div>
+    
+    <div class="main container data-display-content">
+        <div class="text-info"><p>[@templateMessage]</p></div>
         <div id='onlyrdform' class="claro"></div>
         <div class="row">  
         <div id="errorDiv" class="alert alert-danger"></div>

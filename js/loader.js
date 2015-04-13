@@ -77,7 +77,7 @@ function createReport(){
         //create new graph (simulates reloading)
         showSuccess("Thank you your contribution was succesfully saved.You may add a new one or just return to previous page by pressing a back button.");
          initTemplate(TEMPLATE_ID,DATASET_ID);        
-        alert("Success"+JSON.stringify(data));
+       // alert("Success"+JSON.stringify(data));
        
         },
         errorServer);

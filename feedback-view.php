@@ -15,7 +15,7 @@
     $layout->set("header","Feedback about IITB Life");
 
     $layout->set("analytics",$analytics->output());
-    $layout->set("tableMessage","The table below shows feedback provided by other users about IITB Life. What do you think about it? Let us know using <a href=feedback-report.php>the provide feedback form</a>.");
+    $layout->set("tableMessage","The table below shows feedback provided by other users about IITB Life. What do you think about it? Let us know using <a href=feedback-report.php>the feedback form</a>.");
 
     $layout->set("buttonredirect", "feedback-report.php");
 	$layout->set("button","Provide us with feedback");

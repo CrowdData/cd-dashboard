@@ -19,26 +19,25 @@
      [@menu]
       
       <div class="container-fluid data-display-header">
-          <div class="container">        
+        <div class="container">
               <h1 class="data-display capitalize">[@header] </h1>
-	   
-          </div> 
+          </div>
       </div>
 
-     <div class="container data-display-content ">     
+     <div class="main container data-display-content">     
 		
          <div id="tablediv" class="hidden">	
          <div class="table-responsive">
 			<div class="col-md-12">		  
 		<table id="data-table">
-		  <p id="tableTitle" class="center"><span class="glyphicon glyphicon-info-sign"></span> [@tableMessage]</p>
+		  <p id="tableTitle" class="center">[@tableMessage]</p>
          </table>
 			</div>
 		 </div>
         </div>
          <div id="content" class="row"></div>
         <div id="errorDiv" class="alert alert-danger"></div>
-         <div id="successDiv" class="alert alert-success"</div>
+         <div id="successDiv" class="alert alert-success"></div>
       </div>
       
       <div class="container-fluid data-display-footer">
