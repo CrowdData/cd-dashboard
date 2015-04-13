@@ -12,10 +12,10 @@
    $layout->set("cssfilename","dashboard-feedback");
    $layout->set("jsfilename","feedback");
    $layout->set("menu", $menu->output());
-    $layout->set("header","Citizen Feedback");
+    $layout->set("header","Feedback about IITB Life");
 
     $layout->set("analytics",$analytics->output());
-    $layout->set("tableMessage","This table displays the feedback on the dashboard provided by users");
+    $layout->set("tableMessage","The table below shows feedback provided by other users about IITB Life. What do you think about it? Let us know using <a href=feedback-report.php>the provide feedback form</a>.");
 
     $layout->set("buttonredirect", "feedback-report.php");
 	$layout->set("button","Provide us with feedback");
