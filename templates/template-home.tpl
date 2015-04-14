@@ -141,7 +141,7 @@
           </div>
 
           <div>
-            <a href="feedback-view.php">Feedback messages provided</a> at IIT-B
+            <a href="feedback-view.php">feedback messages provided</a> at IIT-B
           </div>
         </div>
       </div>

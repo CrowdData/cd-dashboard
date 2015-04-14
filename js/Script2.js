@@ -16,6 +16,7 @@
                                                         PREFIX cdi: <http://crowddata.abdn.ac.uk/def/incidents/>\
 														PREFIX sioc: <http://rdfs.org/sioc/ns#>\
 														PREFIX dcterms: <http://purl.org/dc/terms/>\
+                                                        PREFIX prov: <http://www.w3.org/ns/prov#>\
                                                         PREFIX inc: <http://crowddata.abdn.ac.uk/def/incidents/>\
                                                         PREFIX cde: <http://crowddata.abdn.ac.uk/def/events/>\
                                                         PREFIX events: <http://crowddata.abdn.ac.uk/def/events/>\
@@ -164,15 +165,15 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
        }
        
        function getQA() {
-
-           var qaUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query= select count(?question) where { \
-                                        GRAPH <http://crowddata.abdn.ac.uk/datasets/questions/data/>   {\
-                                                                    ?question <http://purl.org/dc/terms/created> ?time.\
-                        }\
+           var questionQuery=" select count(?question) FROM <http://crowddata.abdn.ac.uk/datasets/questionsv2/data/> FROM <http://crowddata.abdn.ac.uk/datasets/users/data/> where { \
+                                           ?question a cd:Question ;\
+                                            prov:wasAttributedTo ?user .\
+                                            ?user foaf:name ?name .\
                 }";
+           var qaUrl = 
            $.ajax({
                dataType: "jsonp",
-               url: qaUrl,
+               url:"http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query="+escape(prefixes +questionQuery),
                success: function (data) {
                    var countQues = 0;
 
