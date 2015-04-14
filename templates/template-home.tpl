@@ -146,7 +146,7 @@
         </div>
       </div>
            <div class="col-sm-6">
-               <div class="tile">
+               <div class="tile map-tile">
              <a href="map.php"><img src="css/images/map.png" class="img-rounded img-responsive center-block" alt="IITB Map"></a>
                    </div>
              </div> 

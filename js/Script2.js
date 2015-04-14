@@ -141,6 +141,7 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
             
        }
        function tumtumTrack() {
+           var unavailable="Currently unable to determine how many TumTums are being tracked as the service is unavailable.";
            var url = 'proxyCheck.php?url=http%3A%2F%2Ftransittripplanner.co.in%2FVIS_2%2Ftrack&full_headers=1&full_status=1';
            $("#tumtum-tracker-number").html("<img src=css/images/loading.gif></img>");
            $.ajax({
@@ -153,11 +154,11 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
                    document.getElementById("tumtum-tracker-number").innerHTML = MainData[1];
                    }
                    else{
-                         $(".tumtum-location-tile").html("TumTum Tracker Service currently unavailable");                                                 
+                         $(".tumtum-location-tile").html(unavailable);                                                 
                    }
                },
                error:function(){
-                   $(".tumtum-location-tile").html("TumTum Tracker Service currently unavailable");
+                   $(".tumtum-location-tile").html(unavailable);
                }
            });
        }

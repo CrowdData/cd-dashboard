@@ -1,4 +1,4 @@
-var host = "http://crowddata.abdn.ac.uk/test/1/";
+var host = "http://crowddata.abdn.ac.uk/crowddata/1/";
 
 var TEMPLATE_ID;
 var DATASET_ID;

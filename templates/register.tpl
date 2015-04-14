@@ -124,7 +124,7 @@
                         $('#loading-register').show();
                                          $.ajax({  
         type:"POST",        
-        url: "http://crowddata.abdn.ac.uk/test/1/user/create?callback=?",  
+        url: "http://crowddata.abdn.ac.uk/crowddata/1/user/create?callback=?",  
         data: $('#register').serialize(), 
         success: function(result)
         { 
@@ -173,7 +173,7 @@
                          $('#loading-activate').show();
                                          $.ajax({  
         type:"POST",        
-        url: "http://crowddata.abdn.ac.uk/test/1/user/validate?callback=?",  
+        url: "http://crowddata.abdn.ac.uk/crowddata/1/user/validate?callback=?",  
         data: $('#activation').serialize(), 
         success: function(result)
         { 

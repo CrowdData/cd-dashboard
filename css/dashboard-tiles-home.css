@@ -63,3 +63,7 @@
 .img-rounded {
     border-radius: 5px;
 }
+
+.map-tile {
+    padding:0em;
+}
