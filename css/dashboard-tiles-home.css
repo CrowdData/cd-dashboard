@@ -59,3 +59,7 @@
 .homepage-map {
     align-content: center;
 }
+
+.img-rounded {
+    border-radius: 5px;
+}

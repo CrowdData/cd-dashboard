@@ -32,7 +32,7 @@
       </div>
     
     <div class="main container data-display-content">
-        <div class="text-info"><p>[@templateMessage]</p></div>
+        <div><p>[@templateMessage]</p></div>
         <div id='onlyrdform' class="claro"></div>
         <div class="row">  
         <div id="errorDiv" class="alert alert-danger"></div>

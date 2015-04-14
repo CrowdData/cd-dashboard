@@ -153,11 +153,11 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
                    document.getElementById("tumtum-tracker-number").innerHTML = MainData[1];
                    }
                    else{
-                         $(".tumtum-location-tile").html("TumTum Service currently unavailable");                                                 
+                         $(".tumtum-location-tile").html("TumTum Tracker Service currently unavailable");                                                 
                    }
                },
                error:function(){
-                   $(".tumtum-location-tile").html("TumTum Service currently unavailable");
+                   $(".tumtum-location-tile").html("TumTum Tracker Service currently unavailable");
                }
            });
        }
@@ -278,7 +278,7 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
                                                     WHERE\
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/feedbackv2/data/> {\
-                                                     ?resource a cd:Feedback .\
+                                                     ?Feedback a cd:Feedback .\
                                                     }\
                                                     }";
            var feedbackUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes+ feedbackQuery);

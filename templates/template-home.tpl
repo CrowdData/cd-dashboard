@@ -147,7 +147,7 @@
       </div>
            <div class="col-sm-6">
                <div class="tile">
-             <a href="map.php"><img src="css/images/map.png" class="img-circle img-responsive center-block" alt="IITB Map"></a>
+             <a href="map.php"><img src="css/images/map.png" class="img-rounded img-responsive center-block" alt="IITB Map"></a>
                    </div>
              </div> 
         
@@ -158,7 +158,7 @@
 
           <div>
               <h2>External Links</h2>
-              <p><a href="http://www.iitb.ac.in/newacadhome/toacadcalender.jsp">Academic Calendar</a></p>
+              <p><a href="http://www.iitb.ac.in/newacadhome/toacadcalender.jsp">Academic Calendars</a></p>
               <p><a href="http://www.iitb.ac.in/en/about-iit-bombay/iit-bombay-holidays-list">Holidays List</a></p>
           </div>
         </div>

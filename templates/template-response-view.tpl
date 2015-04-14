@@ -53,13 +53,13 @@
           </div>
       </div>
 	
-	    <div class="main container">
+	    <div class="main container data-display-content">
 		 <div  id="top"></div>
             <div class="row">
-		<p>Can you provide a useful response to this question? If so, please provide it using the form below.</p>
+                <p>Can you provide a useful response to this question? If so, please provide it using <a href="#responseForm">this form</a> below answers.</p>
 	<div id="responsesDiv" class="container"></div>
     </div>
-	   <div class="row">
+	   <div class="row" id="responseForm">
 		    <h2>Response form</h2>
 		<div id="onlyrdform" class="claro container"></div>
             </div>

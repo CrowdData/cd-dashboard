@@ -44,7 +44,7 @@
          </div>
       </div>
 
-     <div class="container display-content ">  
+     <div class="container data-display-content ">  
          <div><p> Use the layers selection box at the top right of the map to display different things on the map. Currently these include real-time TumTum locations, provided by the <a href="http://transittripplanner.co.in/VisitorInformationSystem/tumtum.html">TumTum Tracker system</a> and TumTum stop locations.  Tap on the pins on the map for more details, such as recently reported TumTum demand and incidents at each stop. </p>
           </div>   
    <div id='map' class='map' style="height: 725px;  width: inherit; padding: 2px; "> </div>
