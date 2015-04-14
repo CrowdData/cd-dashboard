@@ -19,7 +19,7 @@
                                                         PREFIX inc: <http://crowddata.abdn.ac.uk/def/incidents/>\
                                                         PREFIX cde: <http://crowddata.abdn.ac.uk/def/events/>\
                                                         PREFIX events: <http://crowddata.abdn.ac.uk/def/events/>\
-                                                        PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\  ";
+                                                        PREFIX cd: <http://crowddata.abdn.ac.uk/ontologies/cd/0.1/>\  ";
 
 var construct = "CONSTRUCT {?instance a cdi:Incident .}";
  function initialize() {
@@ -30,21 +30,22 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
            getDisrupt();
        }
        function getData() {
-
-           var demandQuery = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query= SELECT ?Location ?Demand ?Date \
+           var demQuery="SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
-													?resource <http://purl.org/dc/terms/date> ?Date .\
+													?resource  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  cd:Demand;\
+                                                    <http://purl.org/dc/terms/date> ?Date .\
 											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand }\
 											OPTIONAL { ?resource  <http://purl.org/dc/terms/Location> ?Location }\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 
-           console.log(demandQuery);
+           var url = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query="+escape(prefixes+demQuery);
+           console.log(url);
            $.ajax({
                dataType: "jsonp",
-               url: demandQuery,
+               url: url,
                success: function (data) {
                    var result = "";
                    var countDem = 0;
@@ -141,11 +142,22 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
        }
        function tumtumTrack() {
            var url = 'proxyCheck.php?url=http%3A%2F%2Ftransittripplanner.co.in%2FVIS_2%2Ftrack&full_headers=1&full_status=1';
+           $("#tumtum-tracker-number").html("<img src=css/images/loading.gif></img>");
            $.ajax({
                url: url,
+               timeout:3000,
                success: function (data) {
+            
                    var MainData = data["contents"].toString().split("$", 2);
+                    if(MainData[1]){
                    document.getElementById("tumtum-tracker-number").innerHTML = MainData[1];
+                   }
+                   else{
+                         $(".tumtum-location-tile").html("TumTum Service currently unavailable");                                                 
+                   }
+               },
+               error:function(){
+                   $(".tumtum-location-tile").html("TumTum Service currently unavailable");
                }
            });
        }
@@ -234,7 +246,7 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
                                                     WHERE\
                                                     { \
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/incidents/data/> {\
-                                                     ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cdi:incident ;\
+                                                     ?instance a cdi:Incident ;\
 														                                                    }\
                                                     } ";
            var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes + disruptQuery);
@@ -265,11 +277,11 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
            var feedbackQuery = "SELECT    count(?Feedback) \
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/feedback/data/> {\
-                                                     ?resource <http://purl.org/dc/terms/abstract> ?Feedback .\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/feedbackv2/data/> {\
+                                                     ?resource a cd:Feedback .\
                                                     }\
                                                     }";
-           var feedbackUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(feedbackQuery);
+           var feedbackUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes+ feedbackQuery);
            console.log(feedbackUrl);
            $.ajax({
                dataType: "jsonp",
