@@ -1,21 +1,27 @@
  var prefixes = "PREFIX dc: <http://purl.org/dc/elements/1.1/>\
-                                                                         PREFIX db: <http://crowddata.abdn.ac.uk:8080/d2rq/resource>\
-                                                                         PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\
-                                                                         PREFIX meta: <http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/metadata#>\
-                                                                         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
-                                                                         PREFIX time: <http://www.w3.org/TR/owl-time/>\
-                                                                         PREFIX naptan: <http://transport.data.gov.uk/def/naptan/>\
-                                                                         PREFIX d2r: <http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#>\
-                                                                         PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\
-                                                                         PREFIX foaf: <http://xmlns.com/foaf/spec/>\
-                                                                         PREFIX map: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/#>\
-                                                                         PREFIX owl: <http://www.w3.org/2002/07/owl#>\
-                                                                         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
-                                                                         PREFIX vocab: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/vocab/>\
-                                                                         PREFIX sioc: <http://rdfs.org/sioc/ns#>\
-                                                                         PREFIX dcterms: <http://purl.org/dc/terms/>\
-                                                                         PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\ ";
+                                                        PREFIX db: <http://crowddata.abdn.ac.uk:8080/d2rq/resource>\
+                                                        PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>\
+                                                        PREFIX meta: <http://www4.wiwiss.fu-berlin.de/bizer/d2r-server/metadata#>\
+                                                        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\
+                                                        PREFIX time: <http://www.w3.org/TR/owl-time/>\
+                                                        PREFIX naptan: <http://transport.data.gov.uk/def/naptan/>\
+                                                        PREFIX d2r: <http://sites.wiwiss.fu-berlin.de/suhl/bizer/d2r-server/config.rdf#>\
+                                                        PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\
+                                                        PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+                                                        PREFIX map: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/#>\
+                                                        PREFIX owl: <http://www.w3.org/2002/07/owl#>\
+                                                        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\
+                                                        PREFIX vocab: <http://crowddata.abdn.ac.uk:8080/d2rq/resource/vocab/>\
+                                                        PREFIX event: <http://purl.org/NET/c4dm/event.owl#>\
+                                                        PREFIX cdi: <http://crowddata.abdn.ac.uk/def/incidents/>\
+														PREFIX sioc: <http://rdfs.org/sioc/ns#>\
+														PREFIX dcterms: <http://purl.org/dc/terms/>\
+                                                        PREFIX inc: <http://crowddata.abdn.ac.uk/def/incidents/>\
+                                                        PREFIX cde: <http://crowddata.abdn.ac.uk/def/events/>\
+                                                        PREFIX events: <http://crowddata.abdn.ac.uk/def/events/>\
+                                                        PREFIX cd: <http://crowddata.abdn.ac.uk/vocab/0.1/>\  ";
 
+var construct = "CONSTRUCT {?instance a cdi:Incident .}";
  function initialize() {
            getEvents();
            getQA();
@@ -28,10 +34,10 @@
            var demandQuery = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query= SELECT ?Location ?Demand ?Date \
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demand/data/> {\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
 													?resource <http://purl.org/dc/terms/date> ?Date .\
-											OPTIONAL { ?resource <http://xmlns.com/foaf/0.1/DemandPersonLocation> ?Demand }\
-											OPTIONAL { ?resource <http://purl.org/dc/terms/Location> ?Location }\
+											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand }\
+											OPTIONAL { ?resource  <http://purl.org/dc/terms/Location> ?Location }\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 
@@ -79,7 +85,7 @@
                            document.getElementById("tumtum-demand-number").innerHTML = result;
                        }
                    else {
-                       document.getElementById("tumtum-demand-number").innerHTML = "Last couple of week" + simCount;
+                       document.getElementById("tumtum-demand-number").innerHTML = "Last two weeks " + simCount;
                    }
                    //    document.getElementById("distinctDemand").innerHTML = countDemUni;
                },
@@ -106,27 +112,27 @@
 
                if (index == 4) {
                    if (demands[index] > 1)
-                       return "Last week" + demands[index] + " groups of 21 or more";
+                       return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 21 or more";
                    else
-                       return "Last week" + demands[index] + " group of 21 or more";
+                       return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 21 or more";
                }
                else if (index == 3) {
                    if (demands[index] > 1)
-                        return "Last week" + demands[index] + "groups of 11 to 20";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 11 to 20";
                     else
-                        return "Last week" + demands[index] + "group of 11 to 20";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 11 to 20";
                }
                else if (index == 2){
                    if (demands[index] > 1)
-                        return "Last week" + demands[index] + "groups of 6 to 10";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 6 to 10";
                     else
-                        return "Last week" + demands[index] + "group of 6 to 10";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 6 to 10";
                }
                else if (index == 1){
                    if (demands[index] > 1)
-                        return "Last week" + demands[index] + "groups of 1 to 5";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> groups of 1 to 5";
                     else
-                        return "Last week" + demands[index] + "group of 1 to 5";
+                        return "Last week <br/><span class=\"tile-number\">" + demands[index] + "</span><br/> group of 1 to 5";
                }
                else
                    return generalCount;
@@ -177,14 +183,14 @@
 
        }
        function getEvents() {
-           var eventQuery = "select count(?event) where {\
-                                    GRAPH <http://crowddata.abdn.ac.uk/datasets/events/data/> {\
-                                    ?event <http://purl.org/dc/terms/dateStart> ?start.\
+           var eventQuery = "select count(?instance) where {\
+                                    GRAPH <http://crowddata.abdn.ac.uk/datasets/eventsv2/data/> {\
+                                    ?instance a cde:IITBEvent.\
                                 }\
                                 }\
                             ";
 
-           var eventUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(eventQuery);
+           var eventUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes + eventQuery);
            $.ajax({
                dataType: "jsonp",
                url: eventUrl,
@@ -224,14 +230,14 @@
        }
 
        function getDisrupt() {
-           var disruptQuery = "SELECT  count(?disrupt)\
+           var disruptQuery = "SELECT  count(?instance)\
                                                     WHERE\
                                                     { \
-                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/disruption/data/> {\
-                                                     ?disrupt <http://purl.org/dc/terms/date> ?Occurence_At ;\
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/incidents/data/> {\
+                                                     ?instance <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> cdi:incident ;\
 														                                                    }\
-                                                    } ORDER BY DESC(?Occurence_At)";
-           var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(disruptQuery);
+                                                    } ";
+           var disruptUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(prefixes + disruptQuery);
            console.log(disruptUrl);
            $.ajax({
                dataType: "jsonp",
@@ -245,6 +251,38 @@
 
                    }
                    document.getElementById("disruptions-number").innerHTML = countQues;
+               },
+
+
+               error: function (xhr, textStatus, errorThrown) {
+                   alert("Error:" + textStatus); alert("Error" + errorThrown);
+               }
+
+           });
+       }
+       
+       function getFeedback() {
+           var feedbackQuery = "SELECT    count(?Feedback) \
+                                                    WHERE\
+                                                    { \
+                                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/feedback/data/> {\
+                                                     ?resource <http://purl.org/dc/terms/abstract> ?Feedback .\
+                                                    }\
+                                                    }";
+           var feedbackUrl = "http://crowddata.abdn.ac.uk/query/sparql?callback=?&format=json&query=" + escape(feedbackQuery);
+           console.log(feedbackUrl);
+           $.ajax({
+               dataType: "jsonp",
+               url: feedbackUrl,
+               success: function (data) {
+                   var countQues = 0;
+                   var bindings = data.results.bindings;
+                   for (var i in bindings) {
+                       var feedbackData = data.results.bindings[i];
+                       countFeedback = feedbackData[".1"]["value"];
+
+                   }
+                   document.getElementById("feedback-number").innerHTML = countFeedback;
                },
 
 
