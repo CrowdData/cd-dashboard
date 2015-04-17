@@ -147,7 +147,7 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
            $("#tumtum-tracker-number").html("<img src=css/images/loading.gif></img>");
            $.ajax({
                url: url,
-               timeout:3000,
+               timeout:10000,
                success: function (data) {
             
                    var MainData = data["contents"].toString().split("$", 2);
