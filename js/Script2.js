@@ -199,7 +199,8 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
        function getEvents() {
            var eventQuery = "select count(?instance) where {\
                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/eventsv2/data/> {\
-                                    ?instance a cde:IITBEvent.\
+                                    ?instance a cde:IITBEvent;\
+                                        dcterms:title ?title.\
                                 }\
                                 }\
                             ";
