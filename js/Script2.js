@@ -147,7 +147,7 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
            $("#tumtum-tracker-number").html("<img src=css/images/loading.gif></img>");
            $.ajax({
                url: url,
-               timeout:3000,
+               timeout:10000,
                success: function (data) {
             
                    var MainData = data["contents"].toString().split("$", 2);
@@ -199,7 +199,8 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
        function getEvents() {
            var eventQuery = "select count(?instance) where {\
                                     GRAPH <http://crowddata.abdn.ac.uk/datasets/eventsv2/data/> {\
-                                    ?instance a cde:IITBEvent.\
+                                    ?instance a cde:IITBEvent;\
+                                        dcterms:title ?title.\
                                 }\
                                 }\
                             ";
