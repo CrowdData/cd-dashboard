@@ -38,7 +38,7 @@ var construct = "CONSTRUCT {?instance a cdi:Incident .}";
 													?resource  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  cd:Demand;\
                                                     <http://purl.org/dc/terms/date> ?Date .\
 											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand }\
-											OPTIONAL { ?resource  <http://purl.org/dc/terms/Location> ?Location }\
+											OPTIONAL { ?resource  <http://crowddata.abdn.ac.uk/def/demand/hasLocationLabel> ?Location }\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 

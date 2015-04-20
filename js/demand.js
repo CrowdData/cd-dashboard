@@ -5,7 +5,7 @@ function init() {
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
 													?resource dcterms:date ?Date .\
 											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand }\
-											OPTIONAL { ?resource dcterms:Location ?Location }\
+											OPTIONAL { ?resource <http://crowddata.abdn.ac.uk/def/demand/hasLocationLabel> ?Location }\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 query(demandQuery,handleTable);
