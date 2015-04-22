@@ -18,7 +18,7 @@
     <style>
         @import "release/dijit/themes/claro/claro.css";
     </style>
-
+    <link href="css/dashboard-general.css" rel="stylesheet">
     [@analytics]
 </head>
 
