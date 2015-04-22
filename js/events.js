@@ -28,7 +28,7 @@ WHERE\
 ?instance event:time ?time .\
 ?instance event:place ?location .\
 ?time tl:beginsAtDateTime ?startTime .\
-?time tl:endsAtDateTime ?endTime .\
+OPTIONAL{?time tl:endsAtDateTime ?endTime .}\
 ?location foaf:name ?venue .\
 OPTIONAL{?instance cde:hasTag ?tag .}\
 OPTIONAL{?instance cde:department ?department .?department rdfs:label ?departmentLabel .}\

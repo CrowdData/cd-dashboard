@@ -8,7 +8,7 @@ function getDemand(name, content, marker) {
                                                      GRAPH <http://crowddata.abdn.ac.uk/datasets/demandv2/data/> {\
 													?resource dcterms:date ?Date .\
 											?resource <http://crowddata.abdn.ac.uk/def/demand/demandLevel> ?Demand .\
-											 ?resource dcterms:Location '"+name+"'\
+											 ?resource <http://crowddata.abdn.ac.uk/def/demand/hasLocationLabel> '"+name+"'\
                                                     }\
                                                     } ORDER BY DESC(?Date)";
 
